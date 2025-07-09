@@ -1,14 +1,9 @@
-import type { NextConfig } from "next";
-import path from 'path';
+const sharedConfig = require('../shared/next.shared.config.cjs');
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  webpack: (config) => {
-    config.resolve = config.resolve || {};
-    config.resolve.alias = config.resolve.alias || {};
-    config.resolve.alias['@shared'] = path.resolve(__dirname, '../shared');
-    return config;
-  },
+  ...sharedConfig,
+  // Adicione aqui configurações específicas do checkout, se necessário
 };
 
 export default nextConfig;

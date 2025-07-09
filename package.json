@@ -2,17 +2,30 @@
   "name": "ecommerce-mfe",
   "private": true,
   "scripts": {
-    "dev": "pnpm -r dev",
-    "build": "pnpm -r build",
-    "test": "pnpm -r test",
-    "lint": "pnpm -r lint"
+    "dev:ecommerce": "pnpm --filter ecommerce... dev",
+    "dev:checkout": "pnpm --filter checkout... dev",
+    "build:ecommerce": "pnpm --filter ecommerce... build",
+    "build:checkout": "pnpm --filter checkout... build",
+    "test:ecommerce": "pnpm --filter ecommerce... test",
+    "test:checkout": "pnpm --filter checkout... test",
+    "lint:ecommerce": "pnpm --filter ecommerce... lint",
+    "lint:checkout": "pnpm --filter checkout... lint",
+    "docker:up": "docker-compose up --build",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "docker:restart": "docker-compose restart",
+    "check:all": "pnpm run lint:ecommerce && pnpm run lint:checkout && pnpm run build:ecommerce && pnpm run build:checkout && pnpm --filter ecommerce... test:coverage && pnpm --filter checkout... test:coverage"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.11",
+    "@types/jest": "^30.0.0",
     "autoprefixer": "^10.4.21",
     "eslint": "^9.30.1",
     "husky": "^9.1.7",
+    "jest-environment-jsdom": "^30.0.4",
     "postcss": "^8.5.6",
-    "prettier": "^3.6.2"
+    "prettier": "^3.6.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   }
 }
