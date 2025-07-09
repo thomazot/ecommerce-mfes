@@ -1,0 +1,9 @@
+packages:
+  - 'ecommerce'
+  - 'checkout'
+  - 'shared/*'
+
+onlyBuiltDependencies:
+  - '@tailwindcss/oxide'
+  - sharp
+  - unrs-resolver

@@ -1,0 +1,12 @@
+{
+  "objectives": [
+    "MFEs: mfe-home (listagem e detalhe de produtos), mfe-checkout (checkout e página de sucesso) usando Next.js 15 App Router.",
+    "Shared: shared/schemas com todos os schemas e tipos em Zod, incluindo ProductSchema, CartItemSchema, CheckoutSchema.",
+    "Configuração global: pnpm como gerenciador, scripts globais (start:local, check:all, reset, stop, logs).",
+    "Testes: Jest + RTL, cobertura 100%, arquivos .test.ts(x), test-utils para providers globais.",
+    "State e dados: React Query com cache otimista, SSR, persistência do carrinho via cookies (nookies/js-cookie).",
+    "Infraestrutura: docker-compose, NGINX como reverse proxy, Husky com pre-push rodando pnpm check:all.",
+    "Documentação: README.md com instruções, arquitetura, scripts, docs/arquitetura.png se possível.",
+    "Idioma: código e testes em inglês, textos visíveis na interface em pt-BR."
+  ]
+}
