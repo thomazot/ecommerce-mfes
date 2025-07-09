@@ -22,38 +22,56 @@ docker-compose.yml
 - Instalar dependências:
   ```sh
   pnpm install
+  # ou
+  pnpm run install
   ```
 - Rodar localmente:
   ```sh
-  pnpm --filter ecommerce... dev
-  pnpm --filter checkout... dev
+  pnpm run dev:ecommerce
+  pnpm run dev:checkout
   ```
 - Build de produção:
   ```sh
-  pnpm --filter ecommerce... build
-  pnpm --filter checkout... build
+  pnpm run build:ecommerce
+  pnpm run build:checkout
   ```
 - Testes:
   ```sh
-  pnpm --filter ecommerce... test
-  pnpm --filter checkout... test
+  pnpm run test:ecommerce
+  pnpm run test:checkout
   ```
 - Lint:
   ```sh
-  pnpm --filter ecommerce... lint
-  pnpm --filter checkout... lint
+  pnpm run lint:ecommerce
+  pnpm run lint:checkout
   ```
 
-## Docker & Orquestração
+## Comandos Docker
 
-Cada MFE possui seu próprio Dockerfile em `apps/ecommerce/Dockerfile` e `apps/checkout/Dockerfile`.
-O contexto de build é sempre a raiz do monorepo.
+- Subir o projeto integrado (ecommerce + checkout + NGINX):
+  ```sh
+  pnpm run docker:up
+  ```
+- Parar todos os containers:
+  ```sh
+  pnpm run docker:down
+  ```
+- Ver logs dos containers:
+  ```sh
+  pnpm run docker:logs
+  ```
+- Reiniciar os containers:
+  ```sh
+  pnpm run docker:restart
+  ```
+
+---
 
 ### Subindo o projeto integrado (ecommerce + checkout + NGINX)
 
 ```sh
 pnpm install
-sudo docker-compose up --build
+pnpm run docker:up
 ```
 
 - O NGINX faz o proxy para os MFEs.
