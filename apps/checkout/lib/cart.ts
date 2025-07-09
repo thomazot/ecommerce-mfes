@@ -1,5 +1,5 @@
 import { parseCookies, setCookie, destroyCookie } from "nookies";
-import { CartItemSchema, CartItem } from "../../shared/schemas";
+import { CartItemSchema, CartItem } from "@shared/schemas";
 
 const CART_COOKIE_KEY = "cart";
 

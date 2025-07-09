@@ -9,7 +9,7 @@ const config = {
   testEnvironment: 'jsdom',
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
-    '^shared/(.*)$': '<rootDir>/../shared/$1',
+    '^@shared/(.*)$': '<rootDir>/../shared/$1',
   },
   collectCoverage: true,
   collectCoverageFrom: [

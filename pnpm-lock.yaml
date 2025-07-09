@@ -27,7 +27,7 @@ importers:
         specifier: ^3.6.2
         version: 3.6.2
 
-  checkout:
+  apps/checkout:
     dependencies:
       '@tanstack/react-query':
         specifier: ^5.82.0
@@ -91,7 +91,7 @@ importers:
         specifier: ^5
         version: 5.8.3
 
-  ecommerce:
+  apps/ecommerce:
     dependencies:
       '@tanstack/react-query':
         specifier: ^5.82.0
@@ -154,6 +154,12 @@ importers:
       typescript:
         specifier: ^5
         version: 5.8.3
+
+  apps/shared:
+    dependencies:
+      zod:
+        specifier: ^3.25.76
+        version: 3.25.76
 
 packages:
 
