@@ -1,5 +1,7 @@
 packages:
-  - 'apps/@*'
+  - 'apps/ecommerce'
+  - 'apps/checkout'
+  - 'apps/shared'
 
 onlyBuiltDependencies:
   - '@tailwindcss/oxide'

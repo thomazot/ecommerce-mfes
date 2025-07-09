@@ -3,21 +3,25 @@ services:
   ecommerce:
     build:
       context: .
-      dockerfile: ecommerce/Dockerfile
+      dockerfile: apps/ecommerce/Dockerfile
     container_name: mfe-ecommerce
     ports:
       - '3000:3000'
     environment:
       - NODE_ENV=production
+    volumes:
+      - ./apps/ecommerce:/app/apps/ecommerce
   checkout:
     build:
       context: .
-      dockerfile: checkout/Dockerfile
+      dockerfile: apps/checkout/Dockerfile
     container_name: mfe-checkout
     ports:
       - '3001:3000'
     environment:
       - NODE_ENV=production
+    volumes:
+      - ./apps/checkout:/app/apps/checkout
   nginx:
     image: nginx:alpine
     container_name: mfe-nginx

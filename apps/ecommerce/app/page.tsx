@@ -1,4 +1,4 @@
-import { Product } from '../../shared/schemas';
+import { Product } from '@shared/schemas';
 import Image from 'next/image';
 
 const products: Product[] = [
