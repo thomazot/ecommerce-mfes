@@ -1,7 +1,7 @@
 import { ProductSchema } from "./product";
 
 describe("ProductSchema", () => {
-  it("valida um produto válido", () => {
+  it("should validates a valid product", () => {
     const produtoValido = {
       id: 1,
       title: "Camiseta",
@@ -14,7 +14,7 @@ describe("ProductSchema", () => {
     expect(ProductSchema.parse(produtoValido)).toEqual(produtoValido);
   });
 
-  it("lança erro para produto inválido", () => {
+  it("should throws error for invalid product", () => {
     const produtoInvalido = {
       id: "um",
       title: "Camiseta",
