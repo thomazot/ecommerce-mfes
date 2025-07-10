@@ -17,6 +17,8 @@
     "check:all": "pnpm run lint:ecommerce && pnpm run lint:checkout && pnpm run build:ecommerce && pnpm run build:checkout && pnpm --filter ecommerce... test:coverage && pnpm --filter checkout... test:coverage"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
     "@tailwindcss/postcss": "^4.1.11",
     "@types/jest": "^30.0.0",
     "autoprefixer": "^10.4.21",
