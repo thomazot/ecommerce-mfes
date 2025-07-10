@@ -1,4 +1,4 @@
-import { ProductSchema, Product } from "@shared/schema";
+import { ProductSchema, Product } from "../schemas";
 
 export const getProducts = async (): Promise<Product[]> => {
   const res = await fetch("https://fakestoreapi.com/products");

@@ -1,5 +1,5 @@
 import nextJest from 'next/jest';
-import { globalJestConfig } from '../../jest.global.config';
+const globalJestConfig = require('../../jest.global.config.cjs');
 
 const createJestConfig = nextJest({
   dir: './',

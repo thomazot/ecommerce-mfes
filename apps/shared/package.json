@@ -1,5 +1,5 @@
 {
-  "name": "schemas",
+  "name": "shared",
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
@@ -10,7 +10,9 @@
   ],
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --passWithNoTests",
+    "test:watch": "jest --watch --passWithNoTests",
+    "lint": "eslint . --ext .ts,.tsx",
     "build": "echo 'No build step for shared/schemas'"
   },
   "keywords": [],
@@ -19,5 +21,10 @@
   "packageManager": "pnpm@10.12.4",
   "dependencies": {
     "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "jest": "^30.0.4",
+    "ts-jest": "^29.4.0"
   }
 }

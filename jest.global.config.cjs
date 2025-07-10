@@ -1,4 +1,4 @@
-export const globalJestConfig = {
+module.exports = {
   coverageThreshold: {
     global: {
       branches: 90,
