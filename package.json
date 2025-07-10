@@ -17,10 +17,11 @@
     "docker:down": "docker-compose down",
     "docker:logs": "docker-compose logs -f",
     "docker:restart": "docker-compose restart",
-    "check:all": "pnpm run lint:ecommerce && pnpm run lint:checkout && pnpm run lint:shared && pnpm run build:ecommerce && pnpm run build:checkout && pnpm --filter ecommerce... test:coverage && pnpm --filter checkout... test:coverage && pnpm --filter shared... test:coverage",
+    "check:all": "pnpm run lint:ecommerce && pnpm run lint:checkout && pnpm run lint:shared && pnpm run build:ecommerce && pnpm run build:checkout && pnpm --filter ecommerce... test:coverage && pnpm --filter checkout... test:coverage && pnpm run test:shared:coverage",
     "test:ecommerce:watch": "pnpm --filter ecommerce... run test:watch",
     "test:checkout:watch": "pnpm --filter checkout... run test:watch",
-    "test:shared:watch": "pnpm --filter shared... run test:watch"
+    "test:shared:watch": "pnpm --filter shared... run test:watch",
+    "test:shared:coverage": "pnpm --filter shared... run test:coverage"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",

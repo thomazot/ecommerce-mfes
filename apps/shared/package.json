@@ -13,7 +13,8 @@
     "test": "jest --passWithNoTests",
     "test:watch": "jest --watch --passWithNoTests",
     "lint": "eslint . --ext .ts,.tsx",
-    "build": "echo 'No build step for shared/schemas'"
+    "build": "echo 'No build step for shared/schemas'",
+    "test:coverage": "jest --coverage --passWithNoTests"
   },
   "keywords": [],
   "author": "",

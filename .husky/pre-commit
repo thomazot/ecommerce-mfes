@@ -1,0 +1,6 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+pnpm run lint:ecommerce
+pnpm run lint:checkout
+pnpm run lint:shared 

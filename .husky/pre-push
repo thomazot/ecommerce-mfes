@@ -1,4 +1,6 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-pnpm check:all
+pnpm run test:ecommerce
+pnpm run test:checkout
+pnpm run test:shared
