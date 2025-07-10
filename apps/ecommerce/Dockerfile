@@ -9,7 +9,7 @@ COPY apps/ecommerce ./apps/ecommerce
 
 RUN npm install -g pnpm
 RUN pnpm install --frozen-lockfile
-RUN pnpm --filter @ecommerce... build
+RUN pnpm --filter ecommerce... build
 
 FROM node:20-alpine AS runner
 WORKDIR /app/apps/ecommerce
@@ -22,6 +22,7 @@ COPY --from=builder /app/pnpm-workspace.yaml /app/pnpm-workspace.yaml
 COPY --from=builder /app/package.json /app/package.json
 COPY --from=builder /app/apps/shared /app/apps/shared
 COPY --from=builder /app/apps/ecommerce /app/apps/ecommerce
+COPY --from=builder /app/apps/ecommerce/.next /app/apps/ecommerce/.next
 
 EXPOSE 3000
 CMD ["node_modules/.bin/next", "start"]
