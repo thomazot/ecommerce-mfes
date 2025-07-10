@@ -1,10 +1,17 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-pnpm run lint:ecommerce
-pnpm run lint:checkout
-pnpm run lint:shared
+echo "\033[1;34m🔍 Rodando lint-staged nos arquivos alterados...\033[0m"
+npx lint-staged
 
-pnpm run test:ecommerce
-pnpm run test:checkout
-pnpm run test:shared 
+echo "\033[1;34m🔍 Rodando Lint em todos os módulos...\033[0m"
+pnpm run lint:all
+
+echo "\033[1;32m✅ Lint finalizado com sucesso!\033[0m"
+echo "-----------------------------"
+
+echo "\033[1;34m🧪 Rodando Testes em todos os módulos...\033[0m"
+pnpm run test:all
+
+echo "\033[1;32m✅ Testes finalizados com sucesso!\033[0m"
+echo "-----------------------------" 

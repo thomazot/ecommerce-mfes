@@ -21,7 +21,15 @@
     "test:ecommerce:watch": "pnpm --filter ecommerce... run test:watch",
     "test:checkout:watch": "pnpm --filter checkout... run test:watch",
     "test:shared:watch": "pnpm --filter shared... run test:watch",
-    "test:shared:coverage": "pnpm --filter shared... run test:coverage"
+    "test:shared:coverage": "pnpm --filter shared... run test:coverage",
+    "lint:all": "pnpm run lint:ecommerce && pnpm run lint:checkout && pnpm run lint:shared",
+    "test:all": "pnpm run test:ecommerce && pnpm run test:checkout && pnpm run test:shared",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix"
+    ]
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
@@ -35,6 +43,7 @@
     "eslint": "^8.57.0",
     "husky": "^9.1.7",
     "jest-environment-jsdom": "^30.0.4",
+    "lint-staged": "^16.1.2",
     "postcss": "^8.5.6",
     "prettier": "^3.6.2",
     "ts-node": "^10.9.2",
