@@ -3,4 +3,8 @@
 
 pnpm run lint:ecommerce
 pnpm run lint:checkout
-pnpm run lint:shared 
+pnpm run lint:shared
+
+pnpm run test:ecommerce
+pnpm run test:checkout
+pnpm run test:shared 
