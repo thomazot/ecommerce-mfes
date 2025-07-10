@@ -15,7 +15,7 @@ export const getProductById = async (id: string | number): Promise<Product> => {
 }; 
 
 export const getProductByCategory = async (category: string ): Promise<Product> => {
-  const res = await fetch(`https://fakestoreapi.com/products/category/${category}`);
+  const res = await fetch(`https://fakestoreapi.com/products/category/${category}?ajuste`);
   if (!res.ok) throw new Error("Failed to fetch product");
   const data = await res.json();
   return ProductSchema.parse(data);
