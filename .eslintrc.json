@@ -5,7 +5,7 @@
     "next/core-web-vitals",
     "next"
   ],
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "import"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2020,
@@ -22,6 +22,32 @@
     "no-unused-vars": "warn",
     "@typescript-eslint/no-unused-vars": "warn",
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    "next/no-html-link-for-pages": "off"
+    "next/no-html-link-for-pages": "off",
+    "import/no-relative-parent-imports": "off",
+    "import/order": [
+      "warn",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "@shared/**",
+            "group": "internal"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["builtin"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
   }
 } 

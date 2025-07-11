@@ -1,13 +1,20 @@
-const config = {
+import type { Config } from 'jest';
+
+const config: Config = {
   preset: 'ts-jest',
-  testEnvironment: 'node',
-  transform: {
-    '^.+\\.tsx?$': ['ts-jest', { useESM: true }],
-  },
-  extensionsToTreatAsEsm: ['.ts'],
+  testEnvironment: 'jsdom',
+  collectCoverage: true,
+  collectCoverageFrom: [
+    'schemas/**/*.{ts,tsx}',
+    'services/**/*.{ts,tsx}',
+    '!**/*.test.{ts,tsx}',
+    '!**/index.{ts,tsx}'
+  ],
+  coverageReporters: ['text', 'lcov'],
+  setupFilesAfterEnv: ['<rootDir>/../../jest.setup.ts'],
   moduleNameMapper: {
-    '^(\\.{1,2}/.*)\\.js$': '$1',
+    '\\.(svg)$': '<rootDir>/__mocks__/svgMock.tsx'
   },
 };
 
-export = config; 
+export default config; 

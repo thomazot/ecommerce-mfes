@@ -1,4 +1,4 @@
-import { Product } from "@shared/schemas";
+import { Product } from "../schemas";
 import { getProductByCategory, getProductById, getProducts } from "./product";
 
 global.fetch = jest.fn();
