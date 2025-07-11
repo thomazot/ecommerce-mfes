@@ -11,7 +11,7 @@ const config: Config = {
     '!**/index.{ts,tsx}'
   ],
   coverageReporters: ['text', 'lcov'],
-  setupFilesAfterEnv: ['<rootDir>/../../jest.setup.ts'],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   moduleNameMapper: {
     '\\.(svg)$': '<rootDir>/__mocks__/svgMock.tsx'
   },

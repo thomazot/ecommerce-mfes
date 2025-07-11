@@ -6,6 +6,7 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
-    "svg.d.ts"
+    "svg.d.ts",
+    "jest.setup.ts"
   ]
 } 
