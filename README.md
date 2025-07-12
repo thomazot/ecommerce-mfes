@@ -134,6 +134,11 @@ For more details, see the [Fake Store API documentation](https://fakestoreapi.co
 - See [.cursor-rules.json](.cursor-rules.json) for all project rules, conventions, and architecture.
 - All contributors must follow these rules to ensure code quality and consistency.
 
+## �� Commit Messages
+
+- All commits must be written in English.
+- Use clear and descriptive messages to make the project history easy to understand.
+
 ## 📋 Challenge Requirements
 - Micro frontends architecture (ecommerce & checkout as separate apps)
 - Data from Fake Store API
