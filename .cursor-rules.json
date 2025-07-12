@@ -1,0 +1,80 @@
+{
+  "project": "E-commerce Micro Frontends",
+  "description": "Monorepo for an e-commerce platform using Next.js 15, TailwindCSS v4, pnpm workspaces, a shared module (shared) with Rollup, orchestrated via Docker Compose and Nginx as a reverse proxy.",
+  "architecture": {
+    "type": "micro-frontends",
+    "apps": [
+      {
+        "name": "ecommerce",
+        "description": "Home, Search, and Product Page",
+        "path": "apps/ecommerce"
+      },
+      {
+        "name": "checkout",
+        "description": "Checkout",
+        "path": "apps/checkout"
+      },
+      {
+        "name": "shared",
+        "description": "Reusable components, hooks, and styles",
+        "path": "apps/shared"
+      }
+    ],
+    "reverseProxy": {
+      "tool": "nginx",
+      "routes": {
+        "/": "ecommerce",
+        "/checkout": "checkout"
+      }
+    }
+  },
+  "stack": [
+    "Next.js 15",
+    "TailwindCSS v4",
+    "pnpm workspaces",
+    "Rollup",
+    "Jest",
+    "Docker",
+    "Docker Compose",
+    "Nginx"
+  ],
+  "dataSource": "Fake Store API (https://fakestoreapi.com/)",
+  "conventions": {
+    "componentization": true,
+    "reuseViaShared": true,
+    "styling": "TailwindCSS only",
+    "accessibility": true,
+    "naming": "Descriptive and semantic",
+    "functionStyle": "const for handlers and functions",
+    "earlyReturn": true,
+    "drY": true,
+    "cleanCode": true,
+    "comments": "When necessary",
+    "commits": "All commits must use Conventional Commits and be written in English."
+  },
+  "development": {
+    "startCommand": "docker compose up --build",
+    "sharedBuild": "The shared module must be built before being consumed by the apps.",
+    "scripts": "Use build, dev, lint, and coverage scripts via pnpm in each app.",
+    "routing": {
+      "/": "ecommerce",
+      "/checkout": "checkout"
+    }
+  },
+  "testing": {
+    "automated": true,
+    "framework": "Jest",
+    "preCommit": "Prettier",
+    "lint": "Required before PR"
+  },
+  "collaboration": {
+    "branching": "Feature/fix in a separate branch",
+    "pullRequest": "Describe the purpose and changes",
+    "testsPassing": "All tests must pass before review",
+    "noDirectMain": "Do not merge directly into main"
+  },
+  "delivery": {
+    "githubPublic": true,
+    "focus": "Architecture, organization, and technical decisions"
+  }
+} 
