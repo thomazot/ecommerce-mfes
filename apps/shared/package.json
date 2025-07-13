@@ -5,8 +5,9 @@
   "types": "dist/index.d.ts",
   "private": true,
   "scripts": {
-    "build": "NODE_ENV=production rollup -c rollup.config.mjs && rollup -c rollup.dts.mjs",
-    "dev": "NODE_ENV=develop rollup -c rollup.config.mjs && rollup -c rollup.dts.mjs",
+    "build": "pnpm barrel &&  NODE_ENV=production rollup -c rollup.config.mjs && rollup -c rollup.dts.mjs",
+    "dev": "pnpm barrel && NODE_ENV=develop rollup -c rollup.config.mjs && rollup -c rollup.dts.mjs",
+    "barrel": "node ./generate-barrels.js",
     "test": "jest --config jest.config.cjs --passWithNoTests"
   },
   "keywords": [],

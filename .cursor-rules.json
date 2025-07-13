@@ -76,5 +76,29 @@
   "delivery": {
     "githubPublic": true,
     "focus": "Architecture, organization, and technical decisions"
+  },
+  "projectStructure": {
+    "schemas": "Coloque todos os schemas em apps/shared/src/schemas, separados por domínio (products, cart, category), cada um em sua própria pasta com arquivo schema.ts e testes TDD.",
+    "services": "Coloque todos os serviços de API em apps/shared/src/services, separados por domínio, cada um em sua própria pasta.",
+    "indexExports": "Use um index.ts em schemas para exportar todos os schemas/tipos centralizadamente.",
+    "typeSafety": "Sempre tipar explicitamente o retorno das funções de serviço com os tipos derivados dos schemas.",
+    "importPaths": "Sempre use importações relativas a partir de apps/shared/src para schemas e services.",
+    "tests": "Todos os schemas devem ter testes unitários TDD na mesma pasta do schema, com sufixo .test.ts."
+  },
+  "ide": {
+    "autoImport": "Sugira sempre imports dos schemas/services pelo caminho apps/shared/src/schemas ou apps/shared/src/services.",
+    "autoComplete": "Priorize sugestões de tipos derivados dos schemas (ex: Product, Cart, Categories).",
+    "folderStructure": "Sugira estrutura de pastas conforme o padrão do projeto ao criar novos domínios."
+  },
+  "components": {
+    "uiFolder": "Todos os componentes de UI devem ficar em apps/shared/src/components, organizados por domínio ou funcionalidade.",
+    "tailwind": "Sempre use TailwindCSS para estilização, evitando CSS puro ou styled-components.",
+    "accessibility": "Implemente atributos de acessibilidade (aria-label, role, tabIndex, etc) em todos os componentes interativos.",
+    "naming": "Use nomes descritivos e semânticos para componentes, props e handlers (ex: handleClick, handleChange).",
+    "handlers": "Funções de evento devem ser prefixadas com handle (ex: handleClick).",
+    "constComponents": "Declare componentes e handlers como const, não function.",
+    "earlyReturn": "Prefira early return para legibilidade.",
+    "dry": "Evite repetição de código (DRY).",
+    "test": "Todo componente deve ter teste unitário na mesma pasta, com sufixo .test.tsx."
   }
 } 

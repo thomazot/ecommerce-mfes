@@ -1,10 +1,35 @@
-import { Button } from '@ecommerce-mfe/shared/src/commons/button/index';
+export const metadata = {
+  title: 'Ecommerce | Loja de Exemplo',
+  description:
+    'Compre produtos incríveis na nossa loja de exemplo. Ofertas, novidades e muito mais!',
+  openGraph: {
+    title: 'Ecommerce | Loja de Exemplo',
+    description:
+      'Compre produtos incríveis na nossa loja de exemplo. Ofertas, novidades e muito mais!',
+    url: 'https://www.seuecommerce.com',
+    type: 'website',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Ecommerce | Loja de Exemplo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Ecommerce | Loja de Exemplo',
+    description:
+      'Compre produtos incríveis na nossa loja de exemplo. Ofertas, novidades e muito mais!',
+    images: ['/og-image.png'],
+  },
+  alternates: {
+    canonical: 'https://www.seuecommerce.com',
+  },
+  viewport: 'width=device-width, initial-scale=1',
+};
 
 export default function Page() {
-  return (
-    <h1 className="bg-red-400">
-      Hello, Next.js!
-      <Button />
-    </h1>
-  );
+  return <div>{/* Conteúdo da página */}</div>;
 }
