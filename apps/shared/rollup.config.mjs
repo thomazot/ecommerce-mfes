@@ -3,13 +3,15 @@ import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
 import esbuild from 'rollup-plugin-esbuild';
 
+const isProd = process.env.NODE_ENV === 'production';
+
 /** @type {import('rollup').RollupOptions} */
 export default {
   input: 'src/index.ts',
   output: {
     dir: 'dist',
     format: 'esm',
-    sourcemap: true,
+    sourcemap: isProd ? false : true,
     preserveModules: true,
     preserveModulesRoot: 'src',
   },

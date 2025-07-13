@@ -5,7 +5,7 @@
   "types": "dist/index.d.ts",
   "private": true,
   "scripts": {
-    "build": "rollup -c rollup.config.mjs && rollup -c rollup.dts.mjs",
+    "build": "NODE_ENV=production rollup -c rollup.config.mjs && rollup -c rollup.dts.mjs",
     "dev": "rollup -c rollup.config.mjs -w"
   },
   "keywords": [],

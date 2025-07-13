@@ -48,20 +48,20 @@
 ---
 
 ## 5. Micro Frontends Integration
-- [ ] Ensure both apps are fully independent (no direct imports between them)
-- [ ] Use only the shared module for code reuse
-- [ ] Prepare both apps for Docker build
+- [x] Ensure both apps are fully independent (no direct imports between them)
+- [x] Use only the shared module for code reuse
+- [x] Prepare both apps for Docker build
 
 ---
 
 ## 6. Docker & Nginx Setup
-- [ ] Create Dockerfiles for each app
-- [ ] Create a Dockerfile for the shared module (if needed for build)
-- [ ] Write a `docker-compose.yml` to orchestrate all services
-- [ ] Configure Nginx as a reverse proxy:
+- [x] Create Dockerfiles for each app
+- [x] Create a Dockerfile for the shared module (if needed for build)
+- [x] Write a `docker-compose.yml` to orchestrate all services
+- [x] Configure Nginx as a reverse proxy:
   - [ ] Route `/` and `/product*` to ecommerce
   - [ ] Route `/search*` to ecommerce
-  - [ ] Route `/checkout*` to checkout
+  - [x] Route `/checkout*` to checkout
 - [ ] Test local development with `docker compose up --build`
 
 ---
@@ -75,13 +75,13 @@
 ---
 
 ## 8. Documentation
-- [ ] Write a complete `README.md` with:
-  - [ ] Project overview and architecture
+- [x] Write a complete `README.md` with:
+  - [x] Project overview and architecture
   - [ ] How to run locally (Docker)
   - [ ] How to build and test
   - [ ] How to contribute
 - [ ] Document the shared module usage and build process
-- [ ] Add `.cursor-rules.json` and reference it in the docs
+- [x] Add `.cursor-rules.json` and reference it in the docs
 
 ---
 
