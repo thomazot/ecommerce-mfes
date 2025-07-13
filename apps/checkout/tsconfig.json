@@ -1,0 +1,24 @@
+{
+  "extends": "@ecommerce-mfe/core/tsconfig/base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@ecommerce-mfe/shared/*": ["../shared/src/*"],
+      "@ecommerce-mfe/core/*": ["../core/*"]
+    },
+    "jsx": "preserve",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "app",
+    "src",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
