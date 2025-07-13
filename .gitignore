@@ -15,8 +15,6 @@ dist/
 
 # testing
 coverage/
-*.test.ts
-*.test.tsx
 
 # rollup
 .rollup.cache/
