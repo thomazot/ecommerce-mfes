@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {    
+    "target": "ES2021",
+    "module": "ESNext",
+    "lib": ["DOM", "ESNext"],
+    "moduleResolution": "Bundler",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "react", 
+    "declaration": true,
+    "declarationDir": "dist/types",
+    "rootDir": "src",
+    "outDir": "dist",
+    "emitDeclarationOnly": false,
+    "baseUrl": ".",
+    "paths": {
+      "@ecommerce-mfe/shared/*": ["src/*"]
+    }
+  },
+  "include": ["src"]
+}
