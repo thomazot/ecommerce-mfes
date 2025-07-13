@@ -42,6 +42,7 @@
 - **Micro Frontend 1:** Home, Search, and Product Page ([apps/ecommerce](apps/ecommerce))
 - **Micro Frontend 2:** Checkout ([apps/checkout](apps/checkout))
 - **Shared Module:** Reusable components, hooks, and styles ([apps/shared](apps/shared))
+- **Core Module:** Centralized global configuration for all apps ([apps/core](apps/core))
 - **Orchestration:** Docker Compose + Nginx reverse proxy for seamless routing between micro frontends
 
 ```
@@ -49,6 +50,7 @@
   /ecommerce   # Home, Search, Product
   /checkout    # Checkout
   /shared      # Shared components, hooks, styles
+  /core        # Global configs (Tailwind, ESLint, Jest, TSConfig)
 /nginx         # Nginx reverse proxy config
 docker-compose.yml
 pnpm-workspace.yaml
@@ -231,3 +233,24 @@ MIT
 - Follow the folder structure and centralized exports.
 - Use realistic mocks and examples in tests.
 - Document props and usage examples when needed. 
+
+## 🧩 Core Module: Global Configuration
+
+The `core` module (`apps/core`) centralizes all global configuration files and base settings for the monorepo. This ensures consistency and DRY principles across all micro frontends and shared code. All apps extend or import these configs.
+
+**What you find in `apps/core`:**
+
+- `tailwind/` — Base Tailwind config (`tailwind.config.ts`), global styles (`globals.css`), and PostCSS config. All apps extend from here.
+- `eslint/` — Base ESLint config (`index.js`). All apps extend this for linting rules and ignores.
+- `jest/` — Base Jest config (`base.config.cjs`). Used for consistent test setup and coverage.
+- `tsconfig/` — Base TypeScript config (`base.json`). All apps extend this for type safety and path aliases.
+- `package.json` — Declares peer dependencies for config packages (Tailwind, PostCSS, etc).
+
+**How to use:**
+- Each app imports or extends the configs from `core` in its own config files (e.g., `tsconfig.json`, `eslint.config.js`, `tailwind.config.ts`, `jest.config.cjs`).
+- To update global rules or styles, change them in `core` and re-build/restart the apps.
+
+**Benefits:**
+- Single source of truth for all global settings
+- Consistent linting, typing, and styling across the monorepo
+- Easier upgrades and maintenance 
