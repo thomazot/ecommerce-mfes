@@ -17,7 +17,6 @@
     "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.1",
-    "extend-expect": "link:@testing-library/jest-dom/extend-expect",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "rollup": "^4.45.0",
@@ -26,7 +25,6 @@
     "typescript": "^5.8.3"
   },
   "peerDependencies": {
-    "extend-expect": "link:@testing-library/jest-dom/extend-expect",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "typescript": "^5.8.3"
