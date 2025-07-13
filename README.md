@@ -1,42 +1,7 @@
 # E-commerce Micro Frontends Monorepo
 
-## 🚀 Quick Start: Monorepo Commands
-
-### Root Scripts
-
-- `pnpm dev:ecommerce` — Start the ecommerce app (Next.js) in dev mode and shared in watch mode (Rollup).
-- `pnpm dev:checkout` — Start the checkout app (Next.js) in dev mode and shared in watch mode (Rollup).
-- `pnpm start:ecommerce` — Start the ecommerce app in production mode.
-- `pnpm start:checkout` — Start the checkout app in production mode.
-- `pnpm docker:build` — Build all Docker containers (docker-compose).
-- `pnpm docker:up` — Start all Docker containers in the background.
-- `pnpm docker:down` — Stop and remove all Docker containers.
-- `pnpm docker:logs` — Show logs from Docker containers.
-- `pnpm test:all` — Run all tests in the monorepo (Jest).
-- `pnpm lint` — Run ESLint across the entire monorepo.
-
-### App Scripts
-
-#### Ecommerce ([apps/ecommerce](apps/ecommerce))
-- `pnpm --filter @ecommerce-mfe/ecommerce... dev` — Start Next.js in dev mode.
-- `pnpm --filter @ecommerce-mfe/ecommerce... build` — Build for production.
-- `pnpm --filter @ecommerce-mfe/ecommerce... start` — Start in production mode.
-- `pnpm --filter @ecommerce-mfe/ecommerce... lint` — Run Next.js lint.
-- `pnpm --filter @ecommerce-mfe/ecommerce... test` — Run app tests.
-
-#### Checkout ([apps/checkout](apps/checkout))
-- `pnpm --filter @ecommerce-mfe/checkout... dev` — Start Next.js in dev mode.
-- `pnpm --filter @ecommerce-mfe/checkout... build` — Build for production.
-- `pnpm --filter @ecommerce-mfe/checkout... start` — Start in production mode.
-- `pnpm --filter @ecommerce-mfe/checkout... lint` — Run Next.js lint.
-- `pnpm --filter @ecommerce-mfe/checkout... test` — Run app tests.
-
-#### Shared ([apps/shared](apps/shared))
-- `pnpm --filter @ecommerce-mfe/shared... dev` — Run Rollup in watch mode (rebuild on change).
-- `pnpm --filter @ecommerce-mfe/shared... build` — Build shared (JS + types).
-- `pnpm --filter @ecommerce-mfe/shared... test` — Run shared tests.
-
----
+## 🛒 Project Overview
+This project is a modern e-commerce platform built as a monorepo using micro frontends architecture. It was developed for a practical challenge to demonstrate scalable, maintainable, and modular front-end solutions using Next.js 15, TailwindCSS v4, and a shared module for code reuse. The system is fully dockerized and orchestrated with Nginx as a reverse proxy.
 
 ## 🏗️ Architecture
 - **Micro Frontend 1:** Home, Search, and Product Page ([apps/ecommerce](apps/ecommerce))
@@ -55,6 +20,16 @@
 docker-compose.yml
 pnpm-workspace.yaml
 ```
+
+## 🚀 Tech Stack
+- [Next.js 15](https://nextjs.org/)
+- [TailwindCSS v4](https://tailwindcss.com/)
+- [pnpm workspaces](https://pnpm.io/workspaces)
+- [Rollup](https://rollupjs.org/) (shared module build)
+- [Jest](https://jestjs.io/) (testing)
+- [Docker & Docker Compose](https://docs.docker.com/compose/)
+- [Nginx](https://www.nginx.com/) (reverse proxy)
+- [Fake Store API](https://fakestoreapi.com/) (data source)
 
 ## 🚦 Recommended Development Workflow
 
@@ -79,21 +54,6 @@ pnpm-workspace.yaml
 
 ## 🐳 Docker
 - Use the root `docker:*` scripts to build, start, and stop containers.
-
----
-
-## 🛒 Project Overview
-This project is a modern e-commerce platform built as a monorepo using micro frontends architecture. It was developed for a practical challenge to demonstrate scalable, maintainable, and modular front-end solutions using Next.js 15, TailwindCSS v4, and a shared module for code reuse. The system is fully dockerized and orchestrated with Nginx as a reverse proxy.
-
-## 🚀 Tech Stack
-- [Next.js 15](https://nextjs.org/)
-- [TailwindCSS v4](https://tailwindcss.com/)
-- [pnpm workspaces](https://pnpm.io/workspaces)
-- [Rollup](https://rollupjs.org/) (shared module build)
-- [Jest](https://jestjs.io/) (testing)
-- [Docker & Docker Compose](https://docs.docker.com/compose/)
-- [Nginx](https://www.nginx.com/) (reverse proxy)
-- [Fake Store API](https://fakestoreapi.com/) (data source)
 
 ## 📡 API Data (Fake Store API)
 This project uses the [Fake Store API](https://fakestoreapi.com/) as its data source for all product-related features. Below are the main endpoints and their usage:
@@ -254,3 +214,39 @@ The `core` module (`apps/core`) centralizes all global configuration files and b
 - Single source of truth for all global settings
 - Consistent linting, typing, and styling across the monorepo
 - Easier upgrades and maintenance 
+
+## 🚀 Quick Start: Monorepo Commands
+
+### Root Scripts
+
+- `pnpm dev:ecommerce` — Start the ecommerce app (Next.js) in dev mode and shared in watch mode (Rollup).
+- `pnpm dev:checkout` — Start the checkout app (Next.js) in dev mode and shared in watch mode (Rollup).
+- `pnpm start:ecommerce` — Start the ecommerce app in production mode.
+- `pnpm start:checkout` — Start the checkout app in production mode.
+- `pnpm docker:build` — Build all Docker containers (docker-compose).
+- `pnpm docker:up` — Start all Docker containers in the background.
+- `pnpm docker:down` — Stop and remove all Docker containers.
+- `pnpm docker:logs` — Show logs from Docker containers.
+- `pnpm test:all` — Run all tests in the monorepo (Jest).
+- `pnpm lint` — Run ESLint across the entire monorepo.
+
+### App Scripts
+
+#### Ecommerce ([apps/ecommerce](apps/ecommerce))
+- `pnpm --filter @ecommerce-mfe/ecommerce... dev` — Start Next.js in dev mode.
+- `pnpm --filter @ecommerce-mfe/ecommerce... build` — Build for production.
+- `pnpm --filter @ecommerce-mfe/ecommerce... start` — Start in production mode.
+- `pnpm --filter @ecommerce-mfe/ecommerce... lint` — Run Next.js lint.
+- `pnpm --filter @ecommerce-mfe/ecommerce... test` — Run app tests.
+
+#### Checkout ([apps/checkout](apps/checkout))
+- `pnpm --filter @ecommerce-mfe/checkout... dev` — Start Next.js in dev mode.
+- `pnpm --filter @ecommerce-mfe/checkout... build` — Build for production.
+- `pnpm --filter @ecommerce-mfe/checkout... start` — Start in production mode.
+- `pnpm --filter @ecommerce-mfe/checkout... lint` — Run Next.js lint.
+- `pnpm --filter @ecommerce-mfe/checkout... test` — Run app tests.
+
+#### Shared ([apps/shared](apps/shared))
+- `pnpm --filter @ecommerce-mfe/shared... dev` — Run Rollup in watch mode (rebuild on change).
+- `pnpm --filter @ecommerce-mfe/shared... build` — Build shared (JS + types).
+- `pnpm --filter @ecommerce-mfe/shared... test` — Run shared tests. 
