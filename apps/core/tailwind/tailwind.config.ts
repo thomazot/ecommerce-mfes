@@ -1,9 +1,11 @@
 import type { Config } from 'tailwindcss';
 import path from 'path';
 
+
 const config: Config = {
   content: [
-    path.resolve(__dirname, '../apps/**/*.{ts,tsx,js,jsx,mdx}'),
+    path.relative(__dirname, './../shared/src/**/*.{ts,tsx,js,jsx,mdx}'),
+    path.relative(__dirname, './src/app/**/*.{ts,tsx,js,jsx,mdx}'),
   ],
   theme: {
     extend: {

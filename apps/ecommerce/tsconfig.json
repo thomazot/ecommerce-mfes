@@ -3,9 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@ecommerce-mfe/shared": [
-        "../../libs/shared/src"
-      ],
+      "@ecommerce-mfe/shared/*": ["../shared/src/*"],
       "@ecommerce-mfe/core/*": ["../core/*"]
     },
     "jsx": "preserve",
