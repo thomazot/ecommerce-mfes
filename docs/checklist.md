@@ -1,32 +1,32 @@
 # 📝 Project Implementation Checklist
 
 ## 1. Monorepo & Workspace Setup
-- [ ] Initialize a new monorepo with pnpm workspaces
-- [ ] Create the following folder structure:
-  - [ ] /apps/ecommerce
-  - [ ] /apps/checkout
-  - [ ] /apps/shared
-  - [ ] /nginx
-  - [ ] /docker-compose.yml
-  - [ ] /pnpm-workspace.yaml
-- [ ] Configure `pnpm-workspace.yaml` to include all apps
+- [x] Initialize a new monorepo with pnpm workspaces
+- [x] Create the following folder structure:
+  - [x] /apps/ecommerce
+  - [x] /apps/checkout
+  - [x] /apps/shared
+  - [x] /nginx
+  - [x] /docker-compose.yml
+  - [x] /pnpm-workspace.yaml
+- [x] Configure `pnpm-workspace.yaml` to include all apps
 
 ---
 
 ## 2. Shared Module (apps/shared)
 - [ ] Initialize a TypeScript package for shared components, hooks, and styles
 - [ ] Set up Rollup for building the shared module (TypeScript and CSS)
-- [ ] Configure TailwindCSS v4 for the shared module
-- [ ] Add example components (e.g., Button), hooks, and a global style file
-- [ ] Document how to build and consume the shared module
+- [x] Configure TailwindCSS v4 for the shared module
+- [x] Add example components (e.g., Button), hooks, and a global style file
+- [x] Document how to build and consume the shared module
 
 ---
 
 ## 3. Ecommerce Micro Frontend (apps/ecommerce)
-- [ ] Scaffold a Next.js 15 app
-- [ ] Configure TailwindCSS v4
-- [ ] Set up TypeScript and basic linting
-- [ ] Integrate the shared module (import components/styles)
+- [x] Scaffold a Next.js 15 app
+- [x] Configure TailwindCSS v4
+- [x] Set up TypeScript and basic linting
+- [x] Integrate the shared module (import components/styles)
 - [ ] Implement:
   - [ ] Home page (list products from Fake Store API)
   - [ ] Search page (filter products)
@@ -37,10 +37,10 @@
 ---
 
 ## 4. Checkout Micro Frontend (apps/checkout)
-- [ ] Scaffold a Next.js 15 app
-- [ ] Configure TailwindCSS v4
-- [ ] Set up TypeScript and basic linting
-- [ ] Integrate the shared module
+- [x] Scaffold a Next.js 15 app
+- [x] Configure TailwindCSS v4
+- [x] Set up TypeScript and basic linting
+- [x] Integrate the shared module
 - [ ] Implement:
   - [ ] Checkout page (cart summary, form, confirmation)
 - [ ] Ensure the page is responsive and accessible
