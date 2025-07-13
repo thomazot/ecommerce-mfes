@@ -5,7 +5,8 @@
     "paths": {
       "@ecommerce-mfe/shared": [
         "../../libs/shared/src"
-      ]
+      ],
+      "@ecommerce-mfe/core/*": ["../core/*"]
     },
     "jsx": "preserve",
     "plugins": [

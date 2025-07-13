@@ -1,7 +1,11 @@
 {
- "name": "@ecommerce-mfe/core",
+  "name": "@ecommerce-mfe/core",
   "version": "1.0.0",
   "main": "index.js",
   "private": true,
-  "packageManager": "pnpm@10.13.1"
+  "type": "module",
+  "packageManager": "pnpm@10.13.1",
+  "devDependencies": {
+    "@types/node": "^24.0.13"
+  }
 }

@@ -13,6 +13,7 @@
       "strict": true,
       "skipLibCheck": true,
       "incremental": true,
-      "allowJs": true
+      "allowJs": true,
+      "types": ["react", "node"]
     }
   }

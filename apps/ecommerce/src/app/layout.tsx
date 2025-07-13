@@ -1,3 +1,5 @@
+import "@ecommerce-mfe/core/tailwind/globals.css"
+
 export default function RootLayout({
     children,
   }: {
