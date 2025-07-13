@@ -19,5 +19,6 @@
       "@ecommerce-mfe/shared/*": ["src/*"]
     }
   },
-  "include": ["src"]
+  "types": ["jest", "@testing-library/jest-dom"],
+  "include": ["src", "**/*.test.ts", "**/*.test.tsx"]
 }
