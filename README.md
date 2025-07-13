@@ -1,12 +1,47 @@
 # E-commerce Micro Frontends Monorepo
 
-## 🛒 Project Overview
-This project is a modern e-commerce platform built as a monorepo using micro frontends architecture. It was developed for a practical challenge to demonstrate scalable, maintainable, and modular front-end solutions using Next.js 15, TailwindCSS v4, and a shared module for code reuse. The system is fully dockerized and orchestrated with Nginx as a reverse proxy.
+## 🚀 Quick Start: Monorepo Commands
+
+### Root Scripts
+
+- `pnpm dev:ecommerce` — Start the ecommerce app (Next.js) in dev mode and shared in watch mode (Rollup).
+- `pnpm dev:checkout` — Start the checkout app (Next.js) in dev mode and shared in watch mode (Rollup).
+- `pnpm start:ecommerce` — Start the ecommerce app in production mode.
+- `pnpm start:checkout` — Start the checkout app in production mode.
+- `pnpm docker:build` — Build all Docker containers (docker-compose).
+- `pnpm docker:up` — Start all Docker containers in the background.
+- `pnpm docker:down` — Stop and remove all Docker containers.
+- `pnpm docker:logs` — Show logs from Docker containers.
+- `pnpm test:all` — Run all tests in the monorepo (Jest).
+- `pnpm lint` — Run ESLint across the entire monorepo.
+
+### App Scripts
+
+#### Ecommerce ([apps/ecommerce](apps/ecommerce))
+- `pnpm --filter @ecommerce-mfe/ecommerce... dev` — Start Next.js in dev mode.
+- `pnpm --filter @ecommerce-mfe/ecommerce... build` — Build for production.
+- `pnpm --filter @ecommerce-mfe/ecommerce... start` — Start in production mode.
+- `pnpm --filter @ecommerce-mfe/ecommerce... lint` — Run Next.js lint.
+- `pnpm --filter @ecommerce-mfe/ecommerce... test` — Run app tests.
+
+#### Checkout ([apps/checkout](apps/checkout))
+- `pnpm --filter @ecommerce-mfe/checkout... dev` — Start Next.js in dev mode.
+- `pnpm --filter @ecommerce-mfe/checkout... build` — Build for production.
+- `pnpm --filter @ecommerce-mfe/checkout... start` — Start in production mode.
+- `pnpm --filter @ecommerce-mfe/checkout... lint` — Run Next.js lint.
+- `pnpm --filter @ecommerce-mfe/checkout... test` — Run app tests.
+
+#### Shared ([apps/shared](apps/shared))
+- `pnpm --filter @ecommerce-mfe/shared... dev` — Run Rollup in watch mode (rebuild on change).
+- `pnpm --filter @ecommerce-mfe/shared... build` — Build shared (JS + types).
+- `pnpm --filter @ecommerce-mfe/shared... test` — Run shared tests.
+
+---
 
 ## 🏗️ Architecture
-- **Micro Frontend 1:** Home, Search, and Product Page (`apps/ecommerce`)
-- **Micro Frontend 2:** Checkout (`apps/checkout`)
-- **Shared Module:** Reusable components, hooks, and styles (`apps/shared`)
+- **Micro Frontend 1:** Home, Search, and Product Page ([apps/ecommerce](apps/ecommerce))
+- **Micro Frontend 2:** Checkout ([apps/checkout](apps/checkout))
+- **Shared Module:** Reusable components, hooks, and styles ([apps/shared](apps/shared))
 - **Orchestration:** Docker Compose + Nginx reverse proxy for seamless routing between micro frontends
 
 ```
@@ -18,6 +53,35 @@ This project is a modern e-commerce platform built as a monorepo using micro fro
 docker-compose.yml
 pnpm-workspace.yaml
 ```
+
+## 🚦 Recommended Development Workflow
+
+1. Start shared in watch mode (in one terminal):
+   ```sh
+   pnpm --filter @ecommerce-mfe/shared... dev
+   ```
+2. In another terminal, start the desired app (ecommerce or checkout):
+   ```sh
+   pnpm --filter @ecommerce-mfe/ecommerce... dev
+   # or
+   pnpm --filter @ecommerce-mfe/checkout... dev
+   ```
+3. For production builds, use the `build` and `start` scripts for each app.
+4. (Optional) Use a tool like `concurrently` to run multiple dev servers in one terminal.
+
+## 🧪 Lint, Prettier & Tests
+- Lint, Prettier, and tests run automatically on pre-commit via Husky + lint-staged.
+- To run manually:
+  - `pnpm lint` — Global lint.
+  - `pnpm test:all` — Global tests.
+
+## 🐳 Docker
+- Use the root `docker:*` scripts to build, start, and stop containers.
+
+---
+
+## 🛒 Project Overview
+This project is a modern e-commerce platform built as a monorepo using micro frontends architecture. It was developed for a practical challenge to demonstrate scalable, maintainable, and modular front-end solutions using Next.js 15, TailwindCSS v4, and a shared module for code reuse. The system is fully dockerized and orchestrated with Nginx as a reverse proxy.
 
 ## 🚀 Tech Stack
 - [Next.js 15](https://nextjs.org/)
@@ -91,23 +155,8 @@ For more details, see the [Fake Store API documentation](https://fakestoreapi.co
    - `http://localhost/` → Home, Search, Product (ecommerce)
    - `http://localhost/checkout` → Checkout
 
-### Local Development (optional)
-1. Install dependencies:
-   ```sh
-   pnpm install
-   ```
-2. Build the shared module:
-   ```sh
-   cd apps/shared && pnpm build
-   ```
-3. Start each app in separate terminals:
-   ```sh
-   cd apps/ecommerce && pnpm dev
-   cd apps/checkout && pnpm dev
-   ```
-
 ## 🧩 Development Workflow
-- All code reuse must go through the shared module (`apps/shared`).
+- All code reuse must go through the shared module ([apps/shared](apps/shared)).
 - Use TailwindCSS utility classes for all styling.
 - Follow accessibility best practices (aria-labels, roles, etc).
 - Use descriptive and semantic naming for all variables, functions, and components.
