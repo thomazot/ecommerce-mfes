@@ -7,7 +7,7 @@
   "scripts": {
     "build": "NODE_ENV=production rollup -c rollup.config.mjs && rollup -c rollup.dts.mjs",
     "dev": "rollup -c rollup.config.mjs -w",
-    "test": "jest --config jest.config.js --passWithNoTests"
+    "test": "jest --config jest.config.cjs --passWithNoTests"
   },
   "keywords": [],
   "author": "",

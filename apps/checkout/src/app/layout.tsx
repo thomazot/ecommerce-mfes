@@ -1,13 +1,13 @@
-import "@ecommerce-mfe/core/tailwind/globals.css"
+import '@ecommerce-mfe/core/tailwind/globals.css';
 
 export default function RootLayout({
-    children,
-  }: {
-    children: React.ReactNode
-  }) {
-    return (
-      <html lang="en">
-        <body>{children}</body>
-      </html>
-    )
-  }
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  );
+}

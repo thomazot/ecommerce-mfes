@@ -1,1 +1,1 @@
-export * from './commons/button'
+export * from './commons/button';
