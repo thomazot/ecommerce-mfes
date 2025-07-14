@@ -3,8 +3,12 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@ecommerce-mfe/shared/*": ["../shared/src/*"],
-      "@ecommerce-mfe/core/*": ["../core/*"]
+      "@ecommerce-mfe/shared/*": [
+        "../shared/src/*"
+      ],
+      "@ecommerce-mfe/core/*": [
+        "../core/*"
+      ]
     },
     "jsx": "preserve",
     "plugins": [

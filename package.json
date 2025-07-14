@@ -9,7 +9,7 @@
     "start:ecommerce": "pnpm --filter @ecommerce-mfe/ecommerce... start",
     "start:checkout": "pnpm --filter @ecommerce-mfe/checkout... start",
     "docker:build": "docker-compose build",
-    "docker:up": "docker-compose up -d",
+    "docker:up": "docker-compose up",
     "docker:down": "docker-compose down",
     "docker:logs": "docker-compose logs -f",
     "test:all": "jest --passWithNoTests --silent",

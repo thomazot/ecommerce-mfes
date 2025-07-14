@@ -4,7 +4,13 @@ import { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   transpilePackages: ['@ecommerce-mfe/shared'],
   images: {
-    domains: ['fakestoreapi.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'fakestoreapi.com',
+        pathname: '/img/**',
+      },
+    ],
   },
 };
 

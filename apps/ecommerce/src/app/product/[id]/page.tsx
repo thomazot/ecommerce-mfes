@@ -34,11 +34,11 @@ export const metadata = {
   viewport: 'width=device-width, initial-scale=1',
 };
 type ProductPageProps = {
-    params: { id: number };
+    params: Promise<{ id: number }>;
 };
 
 export default async function ProductPage({ params }:ProductPageProps) {
-    const { id } = params
+    const { id } = await params
     const product = await getProductById(id) 
 
     if(!product) notFound()

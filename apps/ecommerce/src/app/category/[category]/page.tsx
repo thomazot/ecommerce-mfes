@@ -34,11 +34,12 @@ export const metadata = {
 };
 
 type CategoryPageProps = {
-    params: { category: string };
+    params: Promise<{ category: string }>;
 };
 
 export default async function CategoryPage({params}: CategoryPageProps) {
-    const categoryName = decodeURIComponent(params.category)
+    const { category } = await params
+    const categoryName = decodeURIComponent(category)
     const products = categoryName ? (await getProductsByCategory(categoryName)) : []
     
     return <>

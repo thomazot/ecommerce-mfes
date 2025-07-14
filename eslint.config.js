@@ -35,5 +35,6 @@ export default [
       semi: ['error', 'always'],
       quotes: ['error', 'single'],
     },
+    extends: ['next', 'next/core-web-vitals']
   },
 ];

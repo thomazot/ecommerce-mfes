@@ -32,6 +32,7 @@ COPY --from=builder /app/pnpm-workspace.yaml ./pnpm-workspace.yaml
 COPY --from=builder /app/apps/core ./apps/core
 COPY --from=builder /app/apps/shared ./apps/shared
 COPY --from=builder /app/apps/ecommerce/.next .next
+COPY --from=builder /app/apps/ecommerce/next.config.ts ./next.config.ts
 COPY --from=builder /app/apps/ecommerce/public ./public
 COPY --from=builder /app/apps/ecommerce/package.json ./package.json
 
