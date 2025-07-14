@@ -1,6 +1,6 @@
 import { getProductById } from '@ecommerce-mfe/shared/services/products';
 import { notFound } from 'next/navigation';
-import TemplateProduct from './templateProduct';
+import { ProductPage } from '@ecommerce-mfe/shared/containers/productPage';
 
 export const metadata = {
   title: 'Ecommerce | Loja de Exemplo',
@@ -33,15 +33,15 @@ export const metadata = {
   },
   viewport: 'width=device-width, initial-scale=1',
 };
-type ProductPageProps = {
+type PageProps = {
   params: Promise<{ id: number }>;
 };
 
-export default async function ProductPage({ params }: ProductPageProps) {
+export default async function Page({ params }: PageProps) {
   const { id } = await params;
   const product = await getProductById(id);
 
   if (!product) notFound();
 
-  return <TemplateProduct product={product} />;
+  return <ProductPage id={id} initialProduct={product} />;
 }

@@ -1,10 +1,25 @@
 'use client';
 
-import { Button } from '@ecommerce-mfe/shared/commons/button';
-import { Product } from '@ecommerce-mfe/shared/schemas/products';
 import Image from 'next/image';
+import { Button } from '../../commons/button';
+import { Product } from '../../schemas/products';
+import { useQuery } from '@tanstack/react-query';
+import { getProductById } from '../../services/products';
 
-export default function TemplateProduct({ product }: { product: Product }) {
+export const ProductPage = ({
+  id,
+  initialProduct,
+}: {
+  id: number;
+  initialProduct: Product;
+}) => {
+  const { data: product } = useQuery({
+    queryKey: ['product', id],
+    queryFn: () => getProductById(id),
+    initialData: initialProduct,
+    staleTime: 1000 * 60 * 5, // 5 min de cache
+  });
+
   function handleClick() {
     window.location.href = '/checkout';
   }
@@ -26,4 +41,4 @@ export default function TemplateProduct({ product }: { product: Product }) {
       </div>
     </div>
   );
-}
+};

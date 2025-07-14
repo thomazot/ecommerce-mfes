@@ -3,12 +3,10 @@ FROM node:20-alpine AS deps
 WORKDIR /app
 
 # Copia arquivos essenciais da raiz do monorepo
-COPY ../../pnpm-lock.yaml ../../pnpm-workspace.yaml ./ 
-COPY ../../package.json ./package.json
-
+COPY pnpm-lock.yaml pnpm-workspace.yaml package.json tsconfig.json ./
 
 # Copia todos os apps (ecommerce, checkout, core, shared)
-COPY ../../apps ./apps
+COPY apps ./apps
 
 RUN apk add --no-cache libc6-compat
 RUN npm install -g pnpm

@@ -1,5 +1,6 @@
 import { getProductsByCategory } from '@ecommerce-mfe/shared/services/products';
-import { Showcase } from '@ecommerce-mfe/shared/components/showcase';
+import { CategoryPage } from '@ecommerce-mfe/shared/containers/categoryPage';
+import { notFound } from 'next/navigation';
 
 export const metadata = {
   title: 'Ecommerce | Loja de Exemplo',
@@ -33,20 +34,17 @@ export const metadata = {
   viewport: 'width=device-width, initial-scale=1',
 };
 
-type CategoryPageProps = {
+type PageProps = {
   params: Promise<{ category: string }>;
 };
 
-export default async function CategoryPage({ params }: CategoryPageProps) {
+export default async function Page({ params }: PageProps) {
   const { category } = await params;
   const categoryName = decodeURIComponent(category);
-  const products = categoryName
-    ? await getProductsByCategory(categoryName)
-    : [];
 
-  return (
-    <>
-      <Showcase title={`Categoria ${categoryName}`} products={products} />
-    </>
-  );
+  const products = categoryName && (await getProductsByCategory(categoryName));
+
+  if (!products) notFound();
+
+  return <CategoryPage category={categoryName} initialProducts={products} />;
 }

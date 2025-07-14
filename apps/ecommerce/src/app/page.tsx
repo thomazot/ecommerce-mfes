@@ -1,5 +1,5 @@
 import { getProductsByCategory } from '@ecommerce-mfe/shared/services/products';
-import { Showcase } from '@ecommerce-mfe/shared/components/showcase';
+import { HomePage } from '@ecommerce-mfe/shared/containers/homePage';
 
 export const metadata = {
   title: 'Ecommerce | Loja de Exemplo',
@@ -36,12 +36,5 @@ export const metadata = {
 export default async function Page() {
   const products = await getProductsByCategory('jewelery');
 
-  return (
-    <>
-      <Showcase title="Jewelery" products={products ?? []} />
-      <Showcase title="Jewelery" products={products ?? []} />
-      <Showcase title="Jewelery" products={products ?? []} />
-      <Showcase title="Jewelery" products={products ?? []} />
-    </>
-  );
+  return <HomePage initialProducts={products} />;
 }

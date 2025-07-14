@@ -19,6 +19,7 @@
     "@ecommerce-mfe/shared": "workspace:*"
   },
   "peerDependencies": {
+    "@tanstack/react-query": "^5.83.0",
     "@tailwindcss/postcss": "^4.1.11",
     "autoprefixer": "^10.4.21",
     "next": "^15.3.5",

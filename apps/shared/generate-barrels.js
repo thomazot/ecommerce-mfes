@@ -9,9 +9,7 @@ function shouldIncludeFile(fileName) {
 }
 
 function generateBarrel(dir) {
-  const files = fs
-    .readdirSync(dir)
-    .filter(shouldIncludeFile);
+  const files = fs.readdirSync(dir).filter(shouldIncludeFile);
 
   let exports = files
     .map((f) => `export * from './${f.replace(/\.tsx?$/, '')}';`)
@@ -35,6 +33,8 @@ const baseDirs = [
   path.join(__dirname, 'src/components'),
   path.join(__dirname, 'src/schemas'),
   path.join(__dirname, 'src/services'),
+  path.join(__dirname, 'src/containers'),
+  path.join(__dirname, 'src/utils'),
 ];
 
 baseDirs.forEach(walk);
@@ -42,7 +42,7 @@ baseDirs.forEach(walk);
 // Gera src/index.ts exportando os módulos principais
 const srcDir = path.join(__dirname, 'src');
 
-let mainExports = ['components', 'schemas', 'services']
+let mainExports = ['components', 'schemas', 'services', 'containers', 'utils']
   .filter((dir) => {
     const fullDir = path.join(srcDir, dir);
     return fs.existsSync(fullDir) && fs.statSync(fullDir).isDirectory();
