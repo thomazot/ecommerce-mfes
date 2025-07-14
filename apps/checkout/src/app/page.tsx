@@ -1,10 +1,5 @@
-import { Button } from '@ecommerce-mfe/shared/src/commons/button/index';
+import { CheckoutPage } from '@ecommerce-mfe/shared/containers/checkoutPage';
 
 export default function Page() {
-  return (
-    <h1 className="bg-yellow-400">
-      Hello, Next.js!
-      <Button />
-    </h1>
-  );
+  return <CheckoutPage />;
 }
