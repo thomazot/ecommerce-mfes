@@ -1,9 +1,9 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { getCartsByUser } from '../../services/cart';
+import { getCartById } from '../../services/cart';
 import { getProductById } from '../../services/products';
-import { Carts } from '../../schemas/cart';
+import { Cart } from '../../schemas/cart';
 import { useEffect, useState } from 'react';
 
 type CartProduct = {
@@ -19,17 +19,19 @@ type Product = {
 };
 
 export const CheckoutPage = () => {
-  const { data: carts, isLoading } = useQuery<Carts>({
+  const { data: cart, isLoading } = useQuery<Cart>({
     queryKey: ['cart', 1],
-    queryFn: () => getCartsByUser(1),
+    queryFn: () => getCartById(1),
   });
 
   const [products, setProducts] = useState<Record<number, Product>>({});
 
   // Busca detalhes dos produtos do carrinho
   useEffect(() => {
-    if (!carts || carts.length === 0) return;
-    const allProducts: CartProduct[] = carts.flatMap((cart) => cart.products);
+    if (!cart || cart.products.length === 0) return;
+    const allProducts: CartProduct[] = cart.products.flatMap(
+      (product) => product,
+    );
     const uniqueIds = Array.from(new Set(allProducts.map((p) => p.productId)));
 
     const fetchProducts = async () => {
@@ -44,13 +46,13 @@ export const CheckoutPage = () => {
     };
 
     void fetchProducts();
-  }, [carts]);
+  }, [cart]);
 
   if (isLoading) {
     return <div className="text-center py-8">Carregando...</div>;
   }
 
-  if (!carts || carts.length === 0) {
+  if (!cart || cart.products.length === 0) {
     return (
       <div className="text-center py-8 text-gray-500">
         Seu carrinho está vazio.
@@ -58,8 +60,6 @@ export const CheckoutPage = () => {
     );
   }
 
-  // Considera apenas o carrinho mais recente do usuário
-  const cart = carts[carts.length - 1];
   const items = cart.products;
 
   const total = items.reduce((sum, item) => {
