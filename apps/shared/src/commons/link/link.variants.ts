@@ -1,13 +1,8 @@
 import { tv } from 'tailwind-variants';
 
 export const link = tv({
-  base: 'transition-colors focus:outline-none focus:ring-2 focus:ring-primary',
+  base: 'transition-colors focus:outline-none text-current',
   variants: {
-    color: {
-      primary: 'text-primary hover:underline',
-      secondary: 'text-gray-700 hover:text-primary',
-      inherit: 'text-inherit',
-    },
     underline: {
       true: 'underline',
       false: 'no-underline',

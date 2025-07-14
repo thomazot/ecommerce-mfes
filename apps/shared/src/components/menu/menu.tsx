@@ -15,6 +15,7 @@ export const Menu: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const handleMenuToggle = () => setMenuOpen((v) => !v);
   const handleClose = () => setMenuOpen(false);
+  const linkCategory = (cat:string) => `/category/${encodeURIComponent(cat)}`;
 
   return (
     <>
@@ -60,7 +61,7 @@ export const Menu: React.FC = () => {
               {mockCategories.map((cat) => (
                 <li key={cat}>
                   <Link
-                    href={`/?category=${encodeURIComponent(cat)}`}
+                    href={linkCategory(cat)}
                     className={menuItem()}
                     tabIndex={0}
                     aria-label={`Categoria: ${cat}`}
@@ -83,7 +84,7 @@ export const Menu: React.FC = () => {
         {mockCategories.map((cat) => (
           <Link
             key={cat}
-            href={`/?category=${encodeURIComponent(cat)}`}
+            href={linkCategory(cat)}
             className={menuItem()}
             tabIndex={0}
             aria-label={`Categoria: ${cat}`}

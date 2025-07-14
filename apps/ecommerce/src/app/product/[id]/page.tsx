@@ -1,5 +1,6 @@
-import { getProductsByCategory } from '@ecommerce-mfe/shared/services/products'
-import { Showcase } from '@ecommerce-mfe/shared/components/showcase'
+import { getProductById } from '@ecommerce-mfe/shared/services/products'
+import { notFound } from 'next/navigation';
+import TemplateProduct from './templateProduct';
 
 export const metadata = {
   title: 'Ecommerce | Loja de Exemplo',
@@ -32,14 +33,15 @@ export const metadata = {
   },
   viewport: 'width=device-width, initial-scale=1',
 };
+type ProductPageProps = {
+    params: { id: number };
+};
 
-export default async function Page() {
-  const products = await getProductsByCategory('jewelery')
+export default async function ProductPage({ params }:ProductPageProps) {
+    const { id } = params
+    const product = await getProductById(id) 
 
-  return <>
-    <Showcase title='Jewelery' products={products ?? []} />
-    <Showcase title='Jewelery' products={products ?? []} />
-    <Showcase title='Jewelery' products={products ?? []} />
-    <Showcase title='Jewelery' products={products ?? []} />
-  </>;
+    if(!product) notFound()
+
+    return <TemplateProduct product={product} />;
 }

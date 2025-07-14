@@ -1,18 +1,24 @@
 const fs = require('fs');
 const path = require('path');
 
+function shouldIncludeFile(fileName) {
+  const isTsFile = /\.(ts|tsx)$/.test(fileName);
+  const isTestOrVariant = /\.test\.|\.variants\./i.test(fileName);
+  const isIndex = /^index\.(ts|tsx)$/.test(fileName);
+  return isTsFile && !isTestOrVariant && !isIndex;
+}
+
 function generateBarrel(dir) {
   const files = fs
     .readdirSync(dir)
-    .filter(
-      (f) =>
-        (f.endsWith('.ts') || f.endsWith('.tsx')) && !f.startsWith('index.'),
-    );
-  // Sempre cria index.ts, mesmo se vazio
+    .filter(shouldIncludeFile);
+
   let exports = files
     .map((f) => `export * from './${f.replace(/\.tsx?$/, '')}';`)
     .join('\n');
+
   if (!exports) exports = 'export {};';
+
   fs.writeFileSync(path.join(dir, 'index.ts'), exports);
 }
 
@@ -35,9 +41,24 @@ baseDirs.forEach(walk);
 
 // Gera src/index.ts exportando os módulos principais
 const srcDir = path.join(__dirname, 'src');
+
 let mainExports = ['components', 'schemas', 'services']
-  .filter((dir) => fs.existsSync(path.join(srcDir, dir)))
-  .map((dir) => `export * from './${dir}';`)
+  .filter((dir) => {
+    const fullDir = path.join(srcDir, dir);
+    return fs.existsSync(fullDir) && fs.statSync(fullDir).isDirectory();
+  })
+  .flatMap((dir) => {
+    const fullDir = path.join(srcDir, dir);
+    return fs
+      .readdirSync(fullDir)
+      .filter(shouldIncludeFile)
+      .map((file) => {
+        const name = file.replace(/\.(ts|tsx)$/, '');
+        return `export * from './${dir}/${name}';`;
+      });
+  })
   .join('\n');
+
 if (!mainExports) mainExports = 'export {};';
+
 fs.writeFileSync(path.join(srcDir, 'index.ts'), mainExports);

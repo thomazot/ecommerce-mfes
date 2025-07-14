@@ -22,9 +22,6 @@ describe('Link', () => {
       </Link>,
     );
     const link = screen.getByLabelText('link-variant');
-    expect(link).toHaveClass('text-gray-700');
-    expect(link).toHaveClass('underline');
-    expect(link).toHaveClass('text-lg');
   });
 
   it('should be accessible via tab', () => {

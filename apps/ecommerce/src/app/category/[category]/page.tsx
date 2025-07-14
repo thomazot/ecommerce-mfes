@@ -33,13 +33,15 @@ export const metadata = {
   viewport: 'width=device-width, initial-scale=1',
 };
 
-export default async function Page() {
-  const products = await getProductsByCategory('jewelery')
+type CategoryPageProps = {
+    params: { category: string };
+};
 
-  return <>
-    <Showcase title='Jewelery' products={products ?? []} />
-    <Showcase title='Jewelery' products={products ?? []} />
-    <Showcase title='Jewelery' products={products ?? []} />
-    <Showcase title='Jewelery' products={products ?? []} />
-  </>;
+export default async function CategoryPage({params}: CategoryPageProps) {
+    const categoryName = decodeURIComponent(params.category)
+    const products = categoryName ? (await getProductsByCategory(categoryName)) : []
+    
+    return <>
+        <Showcase title={`Categoria ${categoryName}`} products={products} />
+    </>;
 }
