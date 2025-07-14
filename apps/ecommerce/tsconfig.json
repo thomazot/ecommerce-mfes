@@ -1,5 +1,5 @@
 {
-  "extends": "@ecommerce-mfe/core/tsconfig/base.json",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
@@ -15,7 +15,8 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "incremental": true
   },
   "include": [
     "app",

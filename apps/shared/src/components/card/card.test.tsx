@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
 import { Card } from './card';
-import { Product } from '@ecommerce-mfe/shared/schemas/products';
+import { Product } from '../../schemas/products';
 
 jest.mock('next/image', () => ({
   __esModule: true,

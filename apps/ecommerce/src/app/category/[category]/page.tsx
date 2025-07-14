@@ -1,5 +1,5 @@
-import { getProductsByCategory } from '@ecommerce-mfe/shared/services/products'
-import { Showcase } from '@ecommerce-mfe/shared/components/showcase'
+import { getProductsByCategory } from '@ecommerce-mfe/shared/services/products';
+import { Showcase } from '@ecommerce-mfe/shared/components/showcase';
 
 export const metadata = {
   title: 'Ecommerce | Loja de Exemplo',
@@ -34,15 +34,19 @@ export const metadata = {
 };
 
 type CategoryPageProps = {
-    params: Promise<{ category: string }>;
+  params: Promise<{ category: string }>;
 };
 
-export default async function CategoryPage({params}: CategoryPageProps) {
-    const { category } = await params
-    const categoryName = decodeURIComponent(category)
-    const products = categoryName ? (await getProductsByCategory(categoryName)) : []
-    
-    return <>
-        <Showcase title={`Categoria ${categoryName}`} products={products} />
-    </>;
+export default async function CategoryPage({ params }: CategoryPageProps) {
+  const { category } = await params;
+  const categoryName = decodeURIComponent(category);
+  const products = categoryName
+    ? await getProductsByCategory(categoryName)
+    : [];
+
+  return (
+    <>
+      <Showcase title={`Categoria ${categoryName}`} products={products} />
+    </>
+  );
 }

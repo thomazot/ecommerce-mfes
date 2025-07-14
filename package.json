@@ -14,7 +14,7 @@
     "docker:logs": "docker-compose logs -f",
     "test:all": "jest --passWithNoTests --silent",
     "test:shared": "pnpm --filter @ecommerce-mfe/shared... test",
-    "lint": "eslint . --ext .ts,.tsx --no-warn-ignored"
+    "lint": "eslint . --fix"
   },
   "keywords": [],
   "author": "",
@@ -27,7 +27,6 @@
     "zod": "^4.0.5"
   },
   "devDependencies": {
-    "@eslint/js": "^9.31.0",
     "@heroicons/react": "^2.2.0",
     "@tailwindcss/postcss": "^4.1.11",
     "@tailwindcss/typography": "^0.5.16",
@@ -42,7 +41,8 @@
     "@typescript-eslint/parser": "^8.36.0",
     "autoprefixer": "^10.4.21",
     "cross-env": "^7.0.3",
-    "eslint": "^9.31.0",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^15.3.5",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^30.0.4",
     "jest-environment-jsdom": "^30.0.4",

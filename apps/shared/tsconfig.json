@@ -1,34 +1,9 @@
 {
-  "compilerOptions": {    
-    "target": "ES2021",
-    "module": "ESNext",
-    "lib": ["DOM", "ESNext"],
-    "moduleResolution": "Bundler",
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "jsx": "react-jsx",
-    "jsxImportSource": "react", 
-    "declaration": true,
-    "declarationDir": "dist/types",
-    "outDir": "dist",
-    "emitDeclarationOnly": false,
-    "baseUrl": ".",
-    "paths": {
-      "@ecommerce-mfe/shared/*": ["src/*"]
-    }
-  },
-  "types": ["jest", "@testing-library/jest-dom"],
-  "include": [
-    "src",
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.js",
-    "src/**/*.jsx",
-    "src/components/cart/index.tsx",
-    "src/components/logo/index.tsx",
-    "src/components/menu/index.tsx",
-    "src/components/search/index.tsx",
-    "src/jest.setup.ts"
-  ]
-}
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+      "outDir": "dist",
+      "declaration": true,
+      "emitDeclarationOnly": false
+    },
+    "include": ["src"]
+  }
