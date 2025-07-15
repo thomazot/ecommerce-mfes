@@ -1,8 +1,8 @@
-
 import { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   transpilePackages: ['@ecommerce-mfe/shared'],
+  assetPrefix: '/ecommerce',
   images: {
     remotePatterns: [
       {
