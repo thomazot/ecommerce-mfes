@@ -29,10 +29,15 @@ ENV NODE_ENV=production
 COPY --from=builder /app/pnpm-workspace.yaml ./pnpm-workspace.yaml
 COPY --from=builder /app/apps/core ./apps/core
 COPY --from=builder /app/apps/shared ./apps/shared
-COPY --from=builder /app/apps/checkout/.next .next
-COPY --from=builder /app/apps/checkout/public ./public
-COPY --from=builder /app/apps/checkout/package.json ./package.json
+COPY --from=builder /app/apps/checkout/.next ./apps/checkout/.next
+COPY --from=builder /app/apps/checkout/public ./apps/checkout/public
+COPY --from=builder /app/apps/checkout/package.json ./apps/checkout/package.json
+COPY --from=builder /app/apps/checkout/next.config.ts ./apps/checkout/next.config.ts
+
+WORKDIR /app/apps/checkout
 
 RUN npm install -g pnpm && pnpm install --prod --filter .
+
+EXPOSE 3000
 
 CMD ["pnpm", "start"]
