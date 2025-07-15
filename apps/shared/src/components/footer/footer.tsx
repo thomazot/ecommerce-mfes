@@ -1,15 +1,21 @@
 import React from 'react';
 import {
   footer,
+  footerGrid,
   footerSection,
   footerTitle,
   footerLink,
+  footerList,
+  footerSocialList,
+  footerAddress,
+  footerCopyright,
+  footerRow,
 } from './footer.variants';
 import { Link } from '../../commons/link';
 
 export const Footer: React.FC = () => (
   <footer className={footer()} role="contentinfo">
-    <div className="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+    <div className={footerGrid()}>
       {/* Institucional */}
       <section
         className={footerSection()}
@@ -19,7 +25,7 @@ export const Footer: React.FC = () => (
           Institucional
         </h2>
         <nav aria-label="Links institucionais">
-          <ul className="flex flex-col gap-1">
+          <ul className={footerList()}>
             <li>
               <Link href="/about" className={footerLink()}>
                 Sobre nós
@@ -48,7 +54,7 @@ export const Footer: React.FC = () => (
         <h2 id="footer-contato" className={footerTitle()}>
           Contato
         </h2>
-        <address className="not-italic">
+        <address className={footerAddress()}>
           <div>Rua Fictícia, 123 - Centro</div>
           <div>Cidade Exemplo, BR</div>
           <div>CEP: 00000-000</div>
@@ -62,7 +68,7 @@ export const Footer: React.FC = () => (
           Redes Sociais
         </h2>
         <nav aria-label="Redes sociais">
-          <ul className="flex gap-3">
+          <ul className={footerSocialList()}>
             <li>
               <a href="#" aria-label="Instagram" className={footerLink()}>
                 <span aria-hidden="true">📸</span> Instagram
@@ -86,17 +92,17 @@ export const Footer: React.FC = () => (
         <h2 id="footer-seguranca" className={footerTitle()}>
           Segurança
         </h2>
-        <div className="flex items-center gap-2">
+        <div className={footerRow()}>
           <span aria-hidden="true">🔒</span>
           <span>Compra 100% segura</span>
         </div>
-        <div className="flex items-center gap-2">
+        <div className={footerRow()}>
           <span aria-hidden="true">💳</span>
           <span>Pagamentos protegidos</span>
         </div>
       </section>
     </div>
-    <div className="text-center py-4 border-t border-gray-200 text-xs text-gray-500">
+    <div className={footerCopyright()}>
       &copy; {new Date().getFullYear()} Ecommerce. Todos os direitos reservados.
     </div>
   </footer>

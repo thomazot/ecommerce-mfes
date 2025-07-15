@@ -42,6 +42,7 @@ export const Card = ({ id, title, image, price }: CardProps) => {
       </Link>
       <p className={S.price()}>{formattedPrice}</p>
       <Button
+        className={S.button()}
         onClick={() => {
           void handleAddToCart();
         }}

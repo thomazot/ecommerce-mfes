@@ -3,6 +3,7 @@ import { HomePage } from '@ecommerce-mfe/shared/containers/homePage';
 
 export const metadata = {
   title: 'Ecommerce | Loja de Exemplo',
+  metadataBase: new URL('https://www.seuecommerce.com'),
   description:
     'Compre produtos incríveis na nossa loja de exemplo. Ofertas, novidades e muito mais!',
   openGraph: {
@@ -30,7 +31,11 @@ export const metadata = {
   alternates: {
     canonical: 'https://www.seuecommerce.com',
   },
-  viewport: 'width=device-width, initial-scale=1',
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default async function Page() {

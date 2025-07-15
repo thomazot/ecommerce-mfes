@@ -6,6 +6,17 @@ import { BaseProvider } from '@ecommerce-mfe/shared/context/base';
 import { getCategories } from '@ecommerce-mfe/shared/services/category';
 import { CartProvider } from '@ecommerce-mfe/shared/context/cart/cart';
 
+export const metadata = {
+  title: 'Ecommerce | Loja de Exemplo',
+  metadataBase: new URL('https://www.seuecommerce.com'),
+  // ...outros campos
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+};
+
 export default async function RootLayout({
   children,
 }: {

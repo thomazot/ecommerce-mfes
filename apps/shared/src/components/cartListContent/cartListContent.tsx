@@ -55,7 +55,7 @@ export const CartListContent: React.FC = () => {
                             Number(e.target.value),
                           );
                         }}
-                        className="ml-2 w-16 border rounded px-2 py-1 text-center"
+                        className={S.quantityInput()}
                         aria-label="Alterar quantidade"
                       />
                     </div>
@@ -78,7 +78,7 @@ export const CartListContent: React.FC = () => {
                 </div>
               )}
               <button
-                className="ml-2 text-red-500 hover:underline"
+                className={S.removeButton()}
                 onClick={() => {
                   void removeToCart(item.productId);
                 }}

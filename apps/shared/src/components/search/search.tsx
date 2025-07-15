@@ -4,14 +4,7 @@ import { getProductsByTerm } from '../../services/products';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { Button } from '../../commons/button';
 import { Product } from '../../schemas/products';
-import {
-  search,
-  searchForm,
-  searchInput,
-  searchButton,
-  searchDropdown,
-  searchOption,
-} from './search.variants';
+import { search } from './search.variants';
 import { useDebounce } from '../../hooks/useDebounce';
 
 // Definir tipo diretamente
@@ -112,9 +105,10 @@ export const Search: React.FC<SearchProps> = ({ className = '' }) => {
     }
   }, [activeIndex]);
 
+  const S = search();
   return (
     <div
-      className={`${search()} ${className}`}
+      className={`${S.base()} ${className}`}
       role="combobox"
       aria-expanded={showSuggestions}
       aria-owns="search-suggestion-list"
@@ -124,12 +118,12 @@ export const Search: React.FC<SearchProps> = ({ className = '' }) => {
         onSubmit={handleSubmit}
         role="search"
         aria-label="Buscar produtos"
-        className={searchForm()}
+        className={S.form()}
       >
         <input
           ref={inputRef}
           type="search"
-          className={searchInput()}
+          className={S.input()}
           placeholder="Buscar produtos..."
           value={inputValue}
           onChange={handleInputChange}
@@ -146,7 +140,7 @@ export const Search: React.FC<SearchProps> = ({ className = '' }) => {
         <Button
           type="submit"
           aria-label="Buscar"
-          className={searchButton()}
+          className={S.button()}
           typeStyle="none"
         >
           <MagnifyingGlassIcon className="w-5 h-5" />
@@ -157,7 +151,7 @@ export const Search: React.FC<SearchProps> = ({ className = '' }) => {
           id="search-suggestion-list"
           ref={listRef}
           role="listbox"
-          className={searchDropdown()}
+          className={S.dropdown()}
         >
           {suggestions.map((suggestion, idx) => (
             <li
@@ -165,7 +159,11 @@ export const Search: React.FC<SearchProps> = ({ className = '' }) => {
               id={`suggestion-${idx}`}
               role="option"
               aria-selected={activeIndex === idx}
-              className={searchOption(activeIndex === idx)}
+              className={
+                activeIndex === idx
+                  ? `${S.option()} ${S.optionActive()}`
+                  : S.option()
+              }
               onMouseDown={() => handleSuggestionClick(suggestion)}
               tabIndex={-1}
             >

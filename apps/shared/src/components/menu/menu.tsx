@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
-import { menuItem } from './menu.variants';
+import {
+  menuItem,
+  menuOverlay,
+  menuNavMobile,
+  menuNavDesktop,
+  menuListMobile,
+  menuButtonMobile,
+  menuButtonClose,
+} from './menu.variants';
 import { Link } from '../../commons/link';
 import { Button } from '../../commons/button';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
@@ -16,7 +24,7 @@ export const Menu: React.FC = () => {
     <>
       {/* Mobile menu button */}
       <Button
-        className="sm:hidden ml-auto p-2"
+        className={menuButtonMobile()}
         aria-label="Abrir menu"
         aria-expanded={menuOpen}
         onClick={handleMenuToggle}
@@ -31,28 +39,28 @@ export const Menu: React.FC = () => {
         <>
           {/* Overlay */}
           <div
-            className="fixed inset-0 bg-black bg-opacity-90 z-40 sm:hidden transition-opacity duration-200"
+            className={menuOverlay()}
             aria-hidden="true"
             onClick={handleClose}
             role="presentation"
           />
           {/* Menu flutuante */}
           <nav
-            className="fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-50 flex flex-col p-4 sm:hidden transition-transform duration-300 ease-in-out transform translate-x-0"
+            className={menuNavMobile()}
             aria-label="Navegação principal"
             role="navigation"
             tabIndex={-1}
             onClick={(e) => e.stopPropagation()}
           >
             <Button
-              className="ml-auto mb-4 p-2"
+              className={menuButtonClose()}
               aria-label="Fechar menu"
               onClick={handleClose}
               typeStyle="none"
             >
               <XMarkIcon className="w-6 h-6" />
             </Button>
-            <ul className="flex flex-col gap-2">
+            <ul className={menuListMobile()}>
               {menu?.map((cat) => (
                 <li key={cat}>
                   <Link
@@ -72,7 +80,7 @@ export const Menu: React.FC = () => {
 
       {/* Menu desktop */}
       <nav
-        className="hidden sm:flex"
+        className={menuNavDesktop()}
         aria-label="Navegação principal"
         role="navigation"
       >

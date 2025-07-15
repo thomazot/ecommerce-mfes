@@ -17,5 +17,7 @@ export const cartListContent = tv({
       'w-full mt-6 bg-blue-600 text-white py-3 rounded font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400',
     empty: 'text-center py-8 text-gray-500',
     loading: 'text-center py-8',
+    removeButton: 'ml-2 text-red-500 hover:underline',
+    quantityInput: 'ml-2 w-16 border rounded px-2 py-1 text-center',
   },
 });
