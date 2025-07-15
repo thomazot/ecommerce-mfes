@@ -31,8 +31,14 @@ export const metadata = {
   alternates: {
     canonical: 'https://www.seuecommerce.com',
   },
-  viewport: 'width=device-width, initial-scale=1',
+  metadataBase: new URL('https://www.seuecommerce.com'),
 };
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+};
+
 type PageProps = {
   params: Promise<{ id: number }>;
 };

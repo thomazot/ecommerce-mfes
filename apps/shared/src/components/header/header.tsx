@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { Logo } from '../logo';
 import { Search } from '../search';
 import { Menu } from '../menu';
@@ -12,10 +11,6 @@ type HeaderProps = {
 };
 
 export const Header = ({ minimal }: HeaderProps) => {
-  const [search, setSearch] = useState('');
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setSearch(e.target.value);
-
   return (
     <header className="w-full" role="banner">
       <div className={container({ minimal })}>
@@ -23,12 +18,7 @@ export const Header = ({ minimal }: HeaderProps) => {
         <Logo />
         {!minimal && (
           <>
-            <Search
-              value={search}
-              onChange={handleSearchChange}
-              onSubmit={() => false}
-              className="mx-4 flex-1"
-            />
+            <Search />
             <Menu />
             <Cart />
           </>

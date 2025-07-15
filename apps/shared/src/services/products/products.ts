@@ -28,3 +28,15 @@ export const getProductsByCategory = async (
   const data: unknown = await res.json();
   return ProductsSchema.parse(data);
 };
+
+export const getProductsByTerm = async (term: string): Promise<Products> => {
+  const res = await fetch(BASE_URL);
+  const data: unknown = await res.json();
+  const products = ProductsSchema.parse(data);
+  const lowerTerm = term.toLowerCase();
+  return products.filter(
+    (product) =>
+      product.title.toLowerCase().includes(lowerTerm) ||
+      product.description.toLowerCase().includes(lowerTerm),
+  );
+};

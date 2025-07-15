@@ -1,5 +1,5 @@
-import { getProductsByCategory } from '@ecommerce-mfe/shared/services/products';
-import { CategoryPage } from '@ecommerce-mfe/shared/containers/categoryPage';
+import { getProductsByTerm } from '@ecommerce-mfe/shared/services/products';
+import { SearchPage } from '@ecommerce-mfe/shared/containers/searchPage';
 import { notFound } from 'next/navigation';
 
 export const metadata = {
@@ -40,16 +40,13 @@ export const viewport = {
 };
 
 type PageProps = {
-  params: Promise<{ category: string }>;
+  searchParams: Promise<{ term?: string }>;
 };
 
-export default async function Page({ params }: PageProps) {
-  const { category } = await params;
-  const categoryName = decodeURIComponent(category);
+export default async function Page({ searchParams }: PageProps) {
+  const { term } = await searchParams;
+  const products = term ? await getProductsByTerm(term) : [];
+  if (term && !products.length) notFound();
 
-  const products = categoryName && (await getProductsByCategory(categoryName));
-
-  if (!products) notFound();
-
-  return <CategoryPage category={categoryName} initialProducts={products} />;
+  return <SearchPage term={term ?? ''} initialProducts={products} />;
 }
