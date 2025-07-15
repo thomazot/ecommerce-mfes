@@ -1,8 +1,10 @@
+version: '3.8'
 services:
   ecommerce:
     build:
       context: .
       dockerfile: apps/ecommerce/Dockerfile
+      target: runner
     container_name: ecommerce
     environment:
       NODE_ENV: production
@@ -11,6 +13,7 @@ services:
     build:
       context: .
       dockerfile: apps/checkout/Dockerfile
+      target: runner
     container_name: checkout
     environment:
       NODE_ENV: production
