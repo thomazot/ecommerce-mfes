@@ -35,6 +35,7 @@ const baseDirs = [
   path.join(__dirname, 'src/services'),
   path.join(__dirname, 'src/containers'),
   path.join(__dirname, 'src/utils'),
+  path.join(__dirname, 'src/context'),
 ];
 
 baseDirs.forEach(walk);
@@ -42,7 +43,14 @@ baseDirs.forEach(walk);
 // Gera src/index.ts exportando os módulos principais
 const srcDir = path.join(__dirname, 'src');
 
-let mainExports = ['components', 'schemas', 'services', 'containers', 'utils']
+let mainExports = [
+  'components',
+  'schemas',
+  'services',
+  'containers',
+  'utils',
+  'context',
+]
   .filter((dir) => {
     const fullDir = path.join(srcDir, dir);
     return fs.existsSync(fullDir) && fs.statSync(fullDir).isDirectory();

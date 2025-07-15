@@ -3,19 +3,14 @@ import { menuItem } from './menu.variants';
 import { Link } from '../../commons/link';
 import { Button } from '../../commons/button';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-
-const mockCategories = [
-  'electronics',
-  'jewelery',
-  'men\'s clothing',
-  'women\'s clothing',
-];
+import { useBase } from '../../context/base';
 
 export const Menu: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { menu } = useBase();
   const handleMenuToggle = () => setMenuOpen((v) => !v);
   const handleClose = () => setMenuOpen(false);
-  const linkCategory = (cat:string) => `/category/${encodeURIComponent(cat)}`;
+  const linkCategory = (cat: string) => `/category/${encodeURIComponent(cat)}`;
 
   return (
     <>
@@ -58,7 +53,7 @@ export const Menu: React.FC = () => {
               <XMarkIcon className="w-6 h-6" />
             </Button>
             <ul className="flex flex-col gap-2">
-              {mockCategories.map((cat) => (
+              {menu?.map((cat) => (
                 <li key={cat}>
                   <Link
                     href={linkCategory(cat)}
@@ -81,7 +76,7 @@ export const Menu: React.FC = () => {
         aria-label="Navegação principal"
         role="navigation"
       >
-        {mockCategories.map((cat) => (
+        {menu?.map((cat) => (
           <Link
             key={cat}
             href={linkCategory(cat)}

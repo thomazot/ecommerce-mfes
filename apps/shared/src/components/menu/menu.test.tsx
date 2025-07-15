@@ -1,6 +1,11 @@
-import "@testing-library/jest-dom"
+import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Menu } from './menu';
+
+jest.mock('../../context/base', () => ({
+  __esModule: true,
+  useBase: () => ({ menu: ['electronics'] }),
+}));
 
 describe('Menu', () => {
   it('renderiza categorias no desktop', () => {
