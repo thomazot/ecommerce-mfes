@@ -1,7 +1,7 @@
 # E-commerce Micro Frontends Monorepo
 
 ## 🛒 Project Overview
-This project is a modern e-commerce platform built as a monorepo using micro frontends architecture. It was developed for a practical challenge to demonstrate scalable, maintainable, and modular front-end solutions using Next.js 15, TailwindCSS v4, and a shared module for code reuse. The system is fully dockerized and orchestrated with Nginx as a reverse proxy.
+This project is a modern e-commerce platform built as a monorepo using micro frontends architecture. It demonstrates scalable, maintainable, and modular front-end solutions using Next.js 15, TailwindCSS v4, and a shared module for code reuse. The system is fully dockerized and orchestrated with Nginx as a reverse proxy.
 
 ## 🏗️ Architecture
 - **Micro Frontend 1:** Home, Search, and Product Page ([apps/ecommerce](apps/ecommerce))
@@ -24,6 +24,7 @@ pnpm-workspace.yaml
 ## 🚀 Tech Stack
 - [Next.js 15](https://nextjs.org/)
 - [TailwindCSS v4](https://tailwindcss.com/)
+- [tailwind-variants](https://tailwind-variants.org/) (all styling via slots)
 - [pnpm workspaces](https://pnpm.io/workspaces)
 - [Rollup](https://rollupjs.org/) (shared module build)
 - [Jest](https://jestjs.io/) (testing)
@@ -31,8 +32,39 @@ pnpm-workspace.yaml
 - [Nginx](https://www.nginx.com/) (reverse proxy)
 - [Fake Store API](https://fakestoreapi.com/) (data source)
 
-## 🚦 Recommended Development Workflow
+## ✨ Styling & Component Pattern
+- **All styling is done exclusively with TailwindCSS utility classes.**
+- **Every component uses [tailwind-variants](https://tailwind-variants.org/) with `slots` for all styled parts.**
+- No Tailwind classes are allowed directly in JSX—always use slots from the variant file.
+- Example:
+  ```ts
+  // card.variants.ts
+  export const card = tv({
+    slots: {
+      base: '...',
+      image: '...',
+      title: '...',
+      price: '...',
+      button: '...',
+    }
+  });
+  ```
+  ```tsx
+  // Card.tsx
+  const S = card();
+  <article className={S.base()}>
+    <img className={S.image()} ... />
+    <h2 className={S.title()} ... />
+    <p className={S.price()} ... />
+    <button className={S.button()} ... />
+  </article>
+  ```
+- **Mobile-first and fully responsive layouts.**
+- **Accessibility is a must:** use roles, aria-labels, keyboard navigation, etc.
+- **All style variables and classes are centralized in the `component.variants.ts` file.**
+- **No inline or external CSS.**
 
+## 🚦 Recommended Development Workflow
 1. Start shared in watch mode (in one terminal):
    ```sh
    pnpm --filter @ecommerce-mfe/shared... dev
@@ -56,48 +88,9 @@ pnpm-workspace.yaml
 - Use the root `docker:*` scripts to build, start, and stop containers.
 
 ## 📡 API Data (Fake Store API)
-This project uses the [Fake Store API](https://fakestoreapi.com/) as its data source for all product-related features. Below are the main endpoints and their usage:
-
-### Main Endpoints
-- **List all products:**
-  - `GET https://fakestoreapi.com/products`
-  - _Used on Home and Search pages to display all products._
-- **Get product details:**
-  - `GET https://fakestoreapi.com/products/{id}`
-  - _Used on the Product Detail page to show information about a specific product._
-- **List all categories:**
-  - `GET https://fakestoreapi.com/products/categories`
-  - _Used for filtering/searching products by category._
-- **List products by category:**
-  - `GET https://fakestoreapi.com/products/category/{category}`
-  - _Used on Search or Home to filter products by category._
-- **Cart/Checkout (optional):**
-  - `GET https://fakestoreapi.com/carts/user/{userId}`
-  - _Can be used to simulate cart retrieval for the checkout flow._
-
-### Example Data Structure
-```json
-{
-  "id": 1,
-  "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-  "price": 109.95,
-  "description": "Your perfect pack for everyday use and walks in the forest.",
-  "category": "men's clothing",
-  "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-  "rating": { "rate": 3.9, "count": 120 }
-}
-```
-
-### Usage in Micro Frontends
-- **Ecommerce (Home, Search, Product):**
-  - Fetches product lists, product details, and categories for display and filtering.
-- **Checkout:**
-  - Can fetch cart data and display a summary of selected products (simulated, as the API is public and stateless).
-
-For more details, see the [Fake Store API documentation](https://fakestoreapi.com/docs).
+This project uses the [Fake Store API](https://fakestoreapi.com/) as its data source for all product-related features. See the API docs for endpoints and usage.
 
 ## ⚡ Getting Started
-
 ### Prerequisites
 - [Docker](https://www.docker.com/get-started)
 - [Docker Compose](https://docs.docker.com/compose/)
@@ -119,7 +112,8 @@ For more details, see the [Fake Store API documentation](https://fakestoreapi.co
 
 ## 🧩 Development Workflow
 - All code reuse must go through the shared module ([apps/shared](apps/shared)).
-- Use TailwindCSS utility classes for all styling.
+- **All styling must use Tailwind Variants with slots.**
+- **No Tailwind classes in JSX.**
 - Follow accessibility best practices (aria-labels, roles, etc).
 - Use descriptive and semantic naming for all variables, functions, and components.
 - Use `const` for handlers and functions, and prefer early returns.
@@ -145,54 +139,18 @@ For more details, see the [Fake Store API documentation](https://fakestoreapi.co
 - See [.cursor-rules.json](.cursor-rules.json) for all project rules, conventions, and architecture.
 - All contributors must follow these rules to ensure code quality and consistency.
 
-## �� Commit Messages
-
-- All commits must be written in English.
-- Use clear and descriptive messages to make the project history easy to understand.
-
 ## 📋 Challenge Requirements
 - Micro frontends architecture (ecommerce & checkout as separate apps)
 - Data from Fake Store API
 - Componentization and code reuse
 - Responsive and accessible design
-- UI library (TailwindCSS)
+- UI library (TailwindCSS + tailwind-variants)
 - Smooth navigation between micro frontends (via Nginx)
 - Automated tests for main flows
 - Docker Compose for local development
 
 ## 📑 License
 MIT 
-
-## Component Pattern & Structure
-
-- Each component must be in its own folder under `src/components` or `src/commons`.
-- Minimum structure: `component.tsx`, `component.variants.ts`, `component.test.tsx`, `index.tsx` (barrel export).
-- Always use TailwindCSS for styling, preferably via `tailwind-variants` for variants.
-- Always export via the barrel (`index.tsx`).
-- Components must be accessible: use roles, aria-labels, keyboard navigation, etc.
-- Unit tests are required for rendering, accessibility, and main props.
-- Style variables must be separated in `component.variants.ts`.
-- Use centralized Link, Button, etc, in `commons`.
-- Responsive and mobile-first layouts.
-- Avoid unnecessary state logic in pure UI components.
-
-## Main Libraries Used
-
-- **TailwindCSS**: Utility-first CSS framework for all styling.
-- **tailwind-variants**: Typed, reusable component variants.
-- **@heroicons/react**: Modern, accessible SVG icons.
-- **React Testing Library**: For unit testing components.
-- **Jest**: Test runner and assertions.
-- **Zod**: Schema validation and typing for data.
-- **Next.js**: Main framework, using App Router (Next 13+).
-
-## Best Practices
-
-- Always prioritize accessibility and SEO.
-- Components must be reusable and decoupled.
-- Follow the folder structure and centralized exports.
-- Use realistic mocks and examples in tests.
-- Document props and usage examples when needed. 
 
 ## 🧩 Core Module: Global Configuration
 
@@ -228,7 +186,10 @@ The `core` module (`apps/core`) centralizes all global configuration files and b
 - `pnpm docker:down` — Stop and remove all Docker containers.
 - `pnpm docker:logs` — Show logs from Docker containers.
 - `pnpm test:all` — Run all tests in the monorepo (Jest).
+- `pnpm test:shared` — Run tests for the shared module only.
 - `pnpm lint` — Run ESLint across the entire monorepo.
+
+> All scripts listed above exist and are ready to use. Internal scripts like `barrel` are used by the shared module and do not need to be run manually.
 
 ### App Scripts
 
