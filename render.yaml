@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: ecommerce
+    env: docker
+    dockerfilePath: apps/ecommerce/Dockerfile
+    buildCommand: pnpm build
+    startCommand: pnpm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+    plan: free
+    autoDeploy: true
+
+  - type: web
+    name: checkout
+    env: docker
+    dockerfilePath: apps/checkout/Dockerfile
+    buildCommand: pnpm build
+    startCommand: pnpm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+    plan: free
+    autoDeploy: true
+
+  - type: web
+    name: nginx
+    env: docker
+    dockerfilePath: nginx/Dockerfile
+    plan: free
+    autoDeploy: true
+    envVars: []
+    routes:
+      - type: http
+        source: /
+        targetPort: 80
