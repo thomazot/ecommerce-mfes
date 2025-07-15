@@ -3,9 +3,12 @@ const path = require('path');
 
 function shouldIncludeFile(fileName) {
   const isTsFile = /\.(ts|tsx)$/.test(fileName);
-  const isTestOrVariant = /\.test\.|\.variants\./i.test(fileName);
+  const ignorePatterns = ['.test.', '.variants.', '.reduce.', '.helpers.'];
+  const isIgnored = ignorePatterns.some((pattern) =>
+    fileName.includes(pattern),
+  );
   const isIndex = /^index\.(ts|tsx)$/.test(fileName);
-  return isTsFile && !isTestOrVariant && !isIndex;
+  return isTsFile && !isIgnored && !isIndex;
 }
 
 function generateBarrel(dir) {

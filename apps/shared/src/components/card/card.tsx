@@ -2,6 +2,9 @@ import { Product } from '../../schemas/products';
 import { card } from './card.variants';
 import Image from 'next/image';
 import { Link } from '../../commons/link';
+import { Button } from '../../commons/button';
+import { useCart } from '../../context/cart';
+import { useState } from 'react';
 
 const S = card();
 
@@ -14,6 +17,14 @@ export const Card = ({ id, title, image, price }: CardProps) => {
   }).format(price);
 
   const link = `/product/${id}`;
+  const { addToCart, isLoading } = useCart();
+  const [adding, setAdding] = useState(false);
+
+  const handleAddToCart = async () => {
+    setAdding(true);
+    await addToCart(id, 1);
+    setAdding(false);
+  };
 
   return (
     <article className={S.base()}>
@@ -30,6 +41,15 @@ export const Card = ({ id, title, image, price }: CardProps) => {
         {title}
       </Link>
       <p className={S.price()}>{formattedPrice}</p>
+      <Button
+        onClick={() => {
+          void handleAddToCart();
+        }}
+        disabled={isLoading || adding}
+        aria-label="Adicionar ao carrinho"
+      >
+        {adding ? 'Adicionando...' : 'Adicionar ao carrinho'}
+      </Button>
     </article>
   );
 };

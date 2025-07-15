@@ -4,6 +4,7 @@ import { Footer } from '@ecommerce-mfe/shared/components/footer';
 import { ReactQueryProvider } from '@ecommerce-mfe/shared/utils/react-query-provider';
 import { BaseProvider } from '@ecommerce-mfe/shared/context/base';
 import { getCategories } from '@ecommerce-mfe/shared/services/category';
+import { CartProvider } from '@ecommerce-mfe/shared/context/cart/cart';
 
 export default async function RootLayout({
   children,
@@ -16,15 +17,17 @@ export default async function RootLayout({
     <html lang="en">
       <body>
         <ReactQueryProvider>
-          <BaseProvider menu={categories}>
-            <div className="flex flex-col min-h-screen">
-              <Header />
-              <main className="flex flex-col gap-4 my-4 flex-1 container max-w-7xl mx-auto">
-                {children}
-              </main>
-              <Footer />
-            </div>
-          </BaseProvider>
+          <CartProvider>
+            <BaseProvider menu={categories}>
+              <div className="flex flex-col min-h-screen">
+                <Header />
+                <main className="flex flex-col gap-4 my-4 flex-1 container max-w-7xl mx-auto">
+                  {children}
+                </main>
+                <Footer />
+              </div>
+            </BaseProvider>
+          </CartProvider>
         </ReactQueryProvider>
       </body>
     </html>

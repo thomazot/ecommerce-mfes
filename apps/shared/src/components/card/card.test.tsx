@@ -15,6 +15,14 @@ jest.mock('../../commons/link', () => ({
   Link: () => <div />,
 }));
 
+jest.mock('../../context/cart', () => ({
+  __esModule: true,
+  useCart: () => ({
+    addToCart: jest.fn(),
+    isLoading: jest.fn(),
+  }),
+}));
+
 const productMock: Product = {
   id: 1,
   category: 'category',

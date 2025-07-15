@@ -1,52 +1,9 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
-import { getCartById } from '../../services/cart';
-import { getProductById } from '../../services/products';
-import { Cart } from '../../schemas/cart';
-import { useEffect, useState } from 'react';
-
-type CartProduct = {
-  productId: number;
-  quantity: number;
-};
-
-type Product = {
-  id: number;
-  title: string;
-  price: number;
-  image: string;
-};
+import { useCart } from '../../context/cart/cart';
 
 export const CheckoutPage = () => {
-  const { data: cart, isLoading } = useQuery<Cart>({
-    queryKey: ['cart', 1],
-    queryFn: () => getCartById(1),
-  });
-
-  const [products, setProducts] = useState<Record<number, Product>>({});
-
-  // Busca detalhes dos produtos do carrinho
-  useEffect(() => {
-    if (!cart || cart.products.length === 0) return;
-    const allProducts: CartProduct[] = cart.products.flatMap(
-      (product) => product,
-    );
-    const uniqueIds = Array.from(new Set(allProducts.map((p) => p.productId)));
-
-    const fetchProducts = async () => {
-      try {
-        const entries = await Promise.all(
-          uniqueIds.map((id) =>
-            getProductById(id).then((prod) => [id, prod] as [number, Product]),
-          ),
-        );
-        setProducts(Object.fromEntries(entries));
-      } catch {}
-    };
-
-    void fetchProducts();
-  }, [cart]);
+  const { cart, cartProducts, isLoading } = useCart();
 
   if (isLoading) {
     return <div className="text-center py-8">Carregando...</div>;
@@ -61,9 +18,8 @@ export const CheckoutPage = () => {
   }
 
   const items = cart.products;
-
   const total = items.reduce((sum, item) => {
-    const prod = products[item.productId];
+    const prod = cartProducts[item.productId];
     return sum + (prod ? prod.price * item.quantity : 0);
   }, 0);
 
@@ -78,7 +34,7 @@ export const CheckoutPage = () => {
         aria-label="Itens do carrinho"
       >
         {items.map((item) => {
-          const prod = products[item.productId];
+          const prod = cartProducts[item.productId];
           if (!prod) return null;
           return (
             <li

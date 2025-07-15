@@ -1,13 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ShoppingCartIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { cart } from './cart.variants';
-
-const mockCount = 2;
+import { CartListContent } from '../cartListContent/cartListContent';
+import { useCart } from '../../context/cart';
 
 export const Cart: React.FC = () => {
   const [open, setOpen] = useState(false);
   const closeBtnRef = useRef<HTMLButtonElement>(null);
   const S = cart();
+  const { totalCartItems } = useCart();
 
   useEffect(() => {
     if (open) {
@@ -33,7 +34,12 @@ export const Cart: React.FC = () => {
         onClick={() => setOpen(true)}
       >
         <ShoppingCartIcon className={S.icon()} />
-        <span className={S.badge()}>{mockCount}</span>
+        <span
+          className={S.badge()}
+          aria-label={`Itens no carrinho: ${totalCartItems}`}
+        >
+          {totalCartItems}
+        </span>
       </button>
 
       {/* Overlay */}
@@ -71,7 +77,7 @@ export const Cart: React.FC = () => {
         </div>
         {/* Conteúdo do carrinho */}
         <div className={S.content()}>
-          <p className="text-gray-500">Seu carrinho está vazio.</p>
+          <CartListContent />
         </div>
       </aside>
     </>
