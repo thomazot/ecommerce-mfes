@@ -1,28 +1,44 @@
-# 🖥 Practical Test – Front-end Site
+# 🖥 Teste Prático – Site Front-end
 
-## 📌 Challenge: Create an E-commerce Interface Using Micro Frontends Architecture
+## 📌 Desafio: Crie uma Interface de E-commerce Usando Arquitetura de Micro Frontends
 
-### 🎯 Objective
-Create the interface of an e-commerce using Next.js, adopting a micro frontends model, where:
-- **Home, Search, and Product Pages** will be a separate micro frontend.
-- **Checkout** will be an independent micro frontend.
+🔗 Deploy: https://ecommerce.thomazot.com.br/
 
-The communication between the micro frontends must be efficiently integrated, ensuring a good user experience.
+### 🎯 Objetivo
+Crie a interface de um e-commerce utilizando Next.js, adotando o modelo de micro frontends, onde:
+- **Home, Busca e Página de Produto** serão um micro frontend separado.
+- **Checkout** será um micro frontend independente.
 
-### 📜 Requirements
-- ✅ The project must be developed in **Next.js**.
-- ✅ The architecture must be based on micro frontends, separating the following responsibilities:
-  - **Micro Frontend 1:** Home, Search, and Product Page.
+A comunicação entre os micro frontends deve ser integrada de forma eficiente, garantindo uma boa experiência do usuário.
+
+### 📜 Requisitos
+- ✅ O projeto deve ser desenvolvido em **Next.js**.
+- ✅ A arquitetura deve ser baseada em micro frontends, separando as seguintes responsabilidades:
+  - **Micro Frontend 1:** Home, Busca e Página de Produto.
   - **Micro Frontend 2:** Checkout.
-- ✅ Data must be consumed from the [Fake Store API](https://fakestoreapi.com/), avoiding the need for a custom backend.
-- ✅ The application must follow componentization and code reuse principles.
-- ✅ The design must be **responsive** and **accessible**.
-- ✅ The use of a UI library (such as Ant Design, Material UI, Tailwind, Chakra UI, or another of your choice) is recommended to ensure visual consistency and productivity.
-- ✅ Navigation between micro frontends must be smooth and well-structured, ensuring that transitions are transparent to the user.
-- ✅ The code must include automated tests for the main flows.
-- ✅ The project must include a **Docker Compose** to facilitate running the micro frontends in a development environment.
+- ✅ Os dados devem ser consumidos da [Fake Store API](https://fakestoreapi.com/), evitando a necessidade de backend próprio.
+- ✅ A aplicação deve seguir princípios de componentização e reutilização de código.
+- ✅ O design deve ser **responsivo** e **acessível**.
+- ✅ Recomenda-se o uso de uma biblioteca de UI (como Ant Design, Material UI, Tailwind, Chakra UI ou outra de sua escolha) para garantir consistência visual e produtividade.
+- ✅ A navegação entre os micro frontends deve ser fluida e bem estruturada, garantindo que as transições sejam transparentes para o usuário.
+- ✅ O código deve incluir testes automatizados para os principais fluxos.
+- ✅ O projeto deve incluir um **Docker Compose** para facilitar a execução dos micro frontends em ambiente de desenvolvimento.
 
-### 📌 Deadline & Delivery
-- ⏳ **Deadline:** 5 days.
-- 📌 Even if you do not finish the test completely, it is essential to submit it. We will evaluate the solution structure, technical decisions, and code organization.
-- 📂 The code must be sent in a **public GitHub repository**, and the link should be shared for evaluation. 
+### 📌 Prazo & Entrega
+- ⏳ **Prazo:** 5 dias.
+- 📌 Mesmo que não finalize completamente o teste, é essencial submetê-lo. Avaliaremos a estrutura da solução, decisões técnicas e organização do código.
+- 📂 O código deve ser enviado em um **repositório público no GitHub**, e o link compartilhado para avaliação.
+
+## 🚀 CI/CD e Deploy
+
+Este projeto possui integração contínua (CI/CD) utilizando **GitHub Actions**. A cada push na branch `main`, o workflow realiza deploy automático para um Droplet na DigitalOcean, utilizando Docker Compose para orquestrar os micro frontends.
+
+- O domínio publicado é: https://ecommerce.thomazot.com.br/
+- O workflow copia os arquivos via SSH e executa `docker compose up -d --build` no servidor remoto.
+
+### Secrets necessários no GitHub Actions:
+- `DO_HOST`: IP ou hostname do servidor DigitalOcean
+- `DO_SSH_KEY`: Chave privada SSH para acesso ao servidor
+
+Para configurar, acesse:
+`Settings` → `Secrets and variables` → `Actions` → **New repository secret** 
