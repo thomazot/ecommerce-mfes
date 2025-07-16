@@ -29,6 +29,11 @@ jobs:
           key: ${{ secrets.DO_SSH_KEY }}
           script: |
             cd /home/deploy/ecommerce-mfe
+            export PNPM_HOME="$HOME/.local/share/pnpm"
+            export PATH="$PNPM_HOME:$PATH"
+            corepack enable
+            corepack prepare pnpm@latest --activate
+
             pnpm install
             pnpm docker:down
             pnpm docker:build
