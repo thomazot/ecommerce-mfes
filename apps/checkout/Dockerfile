@@ -10,7 +10,7 @@ COPY apps ./apps
 
 RUN apk add --no-cache libc6-compat
 RUN npm install -g pnpm
-RUN pnpm install --frozen-lockfile
+RUN pnpm install
 
 # Stage 2 - Build
 FROM node:20-alpine AS builder
