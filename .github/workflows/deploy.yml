@@ -28,7 +28,16 @@ jobs:
           username: deploy
           key: ${{ secrets.DO_SSH_KEY }}
           script: |
+            set -e
             cd /home/deploy/ecommerce-mfe
-            npm install
-            docker compose down
+
+            echo "✅ Atualizando código"
+            git pull origin develop || true
+
+            echo "🛑 Parando containers antigos"
+            docker compose down --remove-orphans
+
+            echo "🚀 Subindo containers atualizados"
             docker compose up -d --build
+
+            echo "✅ Deploy finalizado com sucesso"
