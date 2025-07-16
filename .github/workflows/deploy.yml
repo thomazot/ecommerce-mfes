@@ -21,7 +21,7 @@ jobs:
           source: "."
           target: "/home/deploy/ecommerce-mfe"
 
-      - name: SSH into server and deploy
+      - name: SSH into server and deploy with Docker Compose
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.DO_HOST }}
@@ -29,12 +29,5 @@ jobs:
           key: ${{ secrets.DO_SSH_KEY }}
           script: |
             cd /home/deploy/ecommerce-mfe
-            export PNPM_HOME="$HOME/.local/share/pnpm"
-            export PATH="$PNPM_HOME:$PATH"
-            corepack enable
-            corepack prepare pnpm@latest --activate
-
-            pnpm install
-            pnpm docker:down
-            pnpm docker:build
-            pnpm docker:up
+            docker compose down
+            docker compose up -d --build
