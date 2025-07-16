@@ -1,0 +1,33 @@
+name: Deploy to DigitalOcean
+
+on:
+  push:
+    branches: [develop]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Copy files to Droplet via SSH
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.DO_HOST }}
+          username: deploy
+          key: ${{ secrets.DO_SSH_KEY }}
+          source: "."
+          target: "/home/deploy/ecommerce-mfe"
+
+      - name: SSH into server and deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DO_HOST }}
+          username: deploy
+          key: ${{ secrets.DO_SSH_KEY }}
+          script: |
+            cd /home/deploy/ecommerce-mfe
+            docker compose down
+            docker compose up -d --build
