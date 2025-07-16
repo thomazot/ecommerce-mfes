@@ -29,5 +29,6 @@ jobs:
           key: ${{ secrets.DO_SSH_KEY }}
           script: |
             cd /home/deploy/ecommerce-mfe
+            npm install
             docker compose down
             docker compose up -d --build
