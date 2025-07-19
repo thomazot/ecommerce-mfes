@@ -10,14 +10,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#1e40af'
+        primary: '#1e40af',
       },
       borderRadius: {
-        xl: '1.25rem'
-      }
-    }
+        xl: '1.25rem',
+      },
+    },
   },
-  plugins: []
+  plugins: [],
 };
 
 export default config;

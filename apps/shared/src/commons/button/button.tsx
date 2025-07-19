@@ -1,6 +1,7 @@
 'use client';
 
 import React, { ButtonHTMLAttributes, forwardRef } from 'react';
+import cn from 'classnames';
 import { button } from './button.variants';
 
 export type ButtonType = 'primary' | 'secondary' | 'none';
@@ -10,10 +11,13 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ typeStyle = 'primary', disabled = false, children, ...props }, ref) => (
+  (
+    { typeStyle = 'primary', disabled = false, children, className, ...props },
+    ref,
+  ) => (
     <button
       ref={ref}
-      className={button({ type: typeStyle, disabled })}
+      className={cn(button({ type: typeStyle, disabled }), className)}
       disabled={disabled}
       aria-disabled={disabled}
       tabIndex={0}

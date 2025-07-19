@@ -27,4 +27,4 @@
 - Components must be reusable and decoupled.
 - Follow the folder structure and centralized exports.
 - Use realistic mocks and examples in tests.
-- Document props and usage examples when needed. 
+- Document props and usage examples when needed.

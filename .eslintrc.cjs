@@ -6,7 +6,7 @@ module.exports = {
       './apps/ecommerce/tsconfig.json',
       './apps/checkout/tsconfig.json',
       './apps/shared/tsconfig.eslint.json',
-      './apps/core/tsconfig.json',  
+      './apps/core/tsconfig.json',
       './tsconfig.json',
     ],
     tsconfigRootDir: __dirname,

@@ -18,10 +18,13 @@ export const CartListContent: React.FC = () => {
   }
 
   const items = cart.products;
-  const total = items.reduce((sum, item) => {
-    const prod = cartProducts[item.productId];
-    return sum + (prod ? prod.price * item.quantity : 0);
-  }, 0);
+  const total = items.reduce(
+    (sum: number, item: { productId: number; quantity: number }) => {
+      const prod = cartProducts[item.productId];
+      return sum + (prod ? prod.price * item.quantity : 0);
+    },
+    0,
+  );
 
   const handleCheckout = () => {
     router.push('/checkout');
@@ -30,7 +33,7 @@ export const CartListContent: React.FC = () => {
   return (
     <section className={S.section()}>
       <ul className={S.list()} role="list" aria-label="Itens do carrinho">
-        {items.map((item) => {
+        {items.map((item: { productId: number; quantity: number }) => {
           const prod = cartProducts[item.productId];
           return (
             <li key={item.productId} className={S.item()}>

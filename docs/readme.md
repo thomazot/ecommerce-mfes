@@ -5,13 +5,16 @@
 🔗 Deploy: https://ecommerce.thomazot.com.br/
 
 ### 🎯 Objetivo
+
 Crie a interface de um e-commerce utilizando Next.js, adotando o modelo de micro frontends, onde:
+
 - **Home, Busca e Página de Produto** serão um micro frontend separado.
 - **Checkout** será um micro frontend independente.
 
 A comunicação entre os micro frontends deve ser integrada de forma eficiente, garantindo uma boa experiência do usuário.
 
 ### 📜 Requisitos
+
 - ✅ O projeto deve ser desenvolvido em **Next.js**.
 - ✅ A arquitetura deve ser baseada em micro frontends, separando as seguintes responsabilidades:
   - **Micro Frontend 1:** Home, Busca e Página de Produto.
@@ -25,6 +28,7 @@ A comunicação entre os micro frontends deve ser integrada de forma eficiente, 
 - ✅ O projeto deve incluir um **Docker Compose** para facilitar a execução dos micro frontends em ambiente de desenvolvimento.
 
 ### 📌 Prazo & Entrega
+
 - ⏳ **Prazo:** 5 dias.
 - 📌 Mesmo que não finalize completamente o teste, é essencial submetê-lo. Avaliaremos a estrutura da solução, decisões técnicas e organização do código.
 - 📂 O código deve ser enviado em um **repositório público no GitHub**, e o link compartilhado para avaliação.
@@ -37,8 +41,9 @@ Este projeto possui integração contínua (CI/CD) utilizando **GitHub Actions**
 - O workflow copia os arquivos via SSH e executa `docker compose up -d --build` no servidor remoto.
 
 ### Secrets necessários no GitHub Actions:
+
 - `DO_HOST`: IP ou hostname do servidor DigitalOcean
 - `DO_SSH_KEY`: Chave privada SSH para acesso ao servidor
 
 Para configurar, acesse:
-`Settings` → `Secrets and variables` → `Actions` → **New repository secret** 
+`Settings` → `Secrets and variables` → `Actions` → **New repository secret**

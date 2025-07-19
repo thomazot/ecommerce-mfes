@@ -61,7 +61,7 @@ export const Menu: React.FC = () => {
               <XMarkIcon className="w-6 h-6" />
             </Button>
             <ul className={menuListMobile()}>
-              {menu?.map((cat) => (
+              {menu?.map((cat: string) => (
                 <li key={cat}>
                   <Link
                     href={linkCategory(cat)}
@@ -84,7 +84,7 @@ export const Menu: React.FC = () => {
         aria-label="Navegação principal"
         role="navigation"
       >
-        {menu?.map((cat) => (
+        {menu?.map((cat: string) => (
           <Link
             key={cat}
             href={linkCategory(cat)}

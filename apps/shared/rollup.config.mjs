@@ -10,7 +10,7 @@ function suppressUseClientWarning() {
         return; // Suprime o warning
       }
       warn(warning);
-    }
+    },
   };
 }
 

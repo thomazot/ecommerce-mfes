@@ -3,12 +3,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@ecommerce-mfe/shared/*": [
-        "../shared/src/*"
-      ],
-      "@ecommerce-mfe/core/*": [
-        "../core/*"
-      ]
+      "@ecommerce-mfe/shared/*": ["../shared/src/*"],
+      "@ecommerce-mfe/core/*": ["../core/*"]
     },
     "jsx": "preserve",
     "plugins": [
@@ -18,12 +14,6 @@
     ],
     "incremental": true
   },
-  "include": [
-    "app",
-    "src",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["app", "src", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }

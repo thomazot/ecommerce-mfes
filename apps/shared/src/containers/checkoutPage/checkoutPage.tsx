@@ -18,10 +18,13 @@ export const CheckoutPage = () => {
   }
 
   const items = cart.products;
-  const total = items.reduce((sum, item) => {
-    const prod = cartProducts[item.productId];
-    return sum + (prod ? prod.price * item.quantity : 0);
-  }, 0);
+  const total = items.reduce(
+    (sum: number, item: { productId: number; quantity: number }) => {
+      const prod = cartProducts[item.productId];
+      return sum + (prod ? prod.price * item.quantity : 0);
+    },
+    0,
+  );
 
   return (
     <section className="max-w-md sm:max-w-7xl mx-auto p-2 sm:p-4">

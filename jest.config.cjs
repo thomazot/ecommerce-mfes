@@ -5,4 +5,4 @@ module.exports = {
     '<rootDir>/apps/checkout',
     '<rootDir>/apps/core',
   ],
-}; 
+};

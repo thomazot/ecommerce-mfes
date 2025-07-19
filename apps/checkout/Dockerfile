@@ -38,6 +38,7 @@ COPY --from=builder /app/apps/shared ./apps/shared
 COPY --from=builder /app/apps/checkout/.next ./.next
 COPY --from=builder /app/apps/checkout/public ./public
 COPY --from=builder /app/apps/checkout/package.json ./package.json
+COPY --from=builder /app/apps/checkout/next.config.ts ./next.config.ts
 
 RUN pnpm install --prod --filter @ecommerce-mfe/checkout...
 

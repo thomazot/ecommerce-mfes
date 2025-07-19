@@ -33,6 +33,7 @@ function walk(dir) {
 }
 
 const baseDirs = [
+  path.join(__dirname, 'src/commons'),
   path.join(__dirname, 'src/components'),
   path.join(__dirname, 'src/schemas'),
   path.join(__dirname, 'src/services'),
@@ -47,27 +48,20 @@ baseDirs.forEach(walk);
 const srcDir = path.join(__dirname, 'src');
 
 let mainExports = [
+  'commons',
   'components',
   'schemas',
   'services',
   'containers',
   'utils',
   'context',
+  'hooks',
 ]
   .filter((dir) => {
     const fullDir = path.join(srcDir, dir);
     return fs.existsSync(fullDir) && fs.statSync(fullDir).isDirectory();
   })
-  .flatMap((dir) => {
-    const fullDir = path.join(srcDir, dir);
-    return fs
-      .readdirSync(fullDir)
-      .filter(shouldIncludeFile)
-      .map((file) => {
-        const name = file.replace(/\.(ts|tsx)$/, '');
-        return `export * from './${dir}/${name}';`;
-      });
-  })
+  .map((dir) => `export * from './${dir}';`)
   .join('\n');
 
 if (!mainExports) mainExports = 'export {};';

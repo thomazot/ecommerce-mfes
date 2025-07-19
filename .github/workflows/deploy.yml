@@ -18,8 +18,8 @@ jobs:
           host: ${{ secrets.DO_HOST }}
           username: deploy
           key: ${{ secrets.DO_SSH_KEY }}
-          source: "."
-          target: "/home/deploy/ecommerce-mfe"
+          source: '.'
+          target: '/home/deploy/ecommerce-mfe'
 
       - name: SSH into server and deploy with Docker Compose
         uses: appleboy/ssh-action@master

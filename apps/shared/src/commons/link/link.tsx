@@ -8,20 +8,12 @@ export type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
 
 export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
   (
-    {
-      underline = false,
-      size = 'md',
-      className = '',
-      children,
-      ...props
-    },
+    { underline = false, size = 'md', className = '', children, ...props },
     ref,
   ) => (
     <a
       ref={ref}
-      className={
-        link({ underline, size }) + (className ? ` ${className}` : '')
-      }
+      className={link({ underline, size }) + (className ? ` ${className}` : '')}
       tabIndex={0}
       {...props}
     >

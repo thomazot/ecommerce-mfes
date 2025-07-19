@@ -101,4 +101,4 @@
     "dry": "Evite repetição de código (DRY).",
     "test": "Todo componente deve ter teste unitário na mesma pasta, com sufixo .test.tsx."
   }
-} 
+}
